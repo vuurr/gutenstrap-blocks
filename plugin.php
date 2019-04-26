@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Gutenstrap
  * Plugin URI: https://eolant.me/
- * Description: Gutenstrap — is a collection of Bootstrap 4 blocks for Gutenberg
+ * Description: Gutenstrap - is a collection of Bootstrap 4 blocks for Gutenberg
  * Author: eolant
  * Author URI: https://eolant.me/
  * Version: 1.0.0

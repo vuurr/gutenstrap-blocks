@@ -1,4 +1,4 @@
-const { __ } = wp.i18n; // Import __() from wp.i18n
+const { __ } = wp.i18n // Import __() from wp.i18n
 
 export const themeTypes = [
 	{ value: 'primary', label: __('Primary') },
@@ -9,4 +9,7 @@ export const themeTypes = [
 	{ value: 'info', label: __('Info') },
 	{ value: 'light', label: __('Light') },
 	{ value: 'dark', label: __('Dark') },
-];
+]
+
+export const utils = {
+}

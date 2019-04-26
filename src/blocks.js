@@ -9,6 +9,12 @@
  * Webpack is compiling as the input file.
  */
 
-import './editor.scss';
+import './editor.scss'
 
-import './alert/index.js';
+// Components
+import './alert/index.js'
+
+// Layout
+import './container/index.js'
+import './row/index.js'
+import './column/index.js'

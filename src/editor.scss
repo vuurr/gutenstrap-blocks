@@ -1,3 +1,7 @@
 .bootstrap-styles {
 	@import '~bootstrap/scss/bootstrap';
+
+	.components-icon-button {
+		overflow: hidden;
+	}
 }

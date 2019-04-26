@@ -1,5 +1,5 @@
 /**
- * BLOCK: Bootstrap Alert
+ * BLOCK: Bootstrap Container
  *
  */
 
@@ -9,17 +9,13 @@ import './editor.scss'
 
 // Global import
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBell } from '@fortawesome/free-solid-svg-icons'
+import { faPhone } from '@fortawesome/free-solid-svg-icons'
 import classnames from 'classnames'
 import { applyFilters } from '@wordpress/hooks'
-
-// Import common
-import { themeTypes, utils } from '../common.js'
 
 const { __ } = wp.i18n // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks // Import registerBlockType() from wp.blocks
 const {
-    RichText,
     BlockControls,
     AlignmentToolbar,
     InspectorControls,
@@ -27,21 +23,8 @@ const {
 } = wp.editor
 const {
     PanelBody,
-    SelectControl,
     ToggleControl,
 } = wp.components
-
-/**
- * Filter block content
- *
- * @param  string  content
- * @return string
- */
-function filterContent( content ) {
-	content = applyFilters( 'gutenstrap.alert.content', content )
-
-	return content
-}
 
 /**
  * Create list of classes for class property
@@ -55,25 +38,21 @@ function  getClasses( props ) {
 	} = props
 
 	const {
-		themeType = themeTypes[0].value,
 		alignment,
-		dismissible,
+		isFluid,
 	} = props.attributes
 
 	return classnames( [
 		className,
-		'alert',
-		{ [ `alert-${ themeType }` ]: !!themeType },
 		{ [ `text-${ alignment }` ]: !!alignment }
-	], applyFilters( 'gutenstrap.alert.classes', {
-		'alert-dismissible': dismissible,
-		'fade': dismissible,
-		'show': dismissible,
+	], applyFilters( 'gutenstrap.container.classes', {
+		'container': ! isFluid,
+		'container-fluid': isFluid,
 	}, props ) )
 }
 
 /**
- * Register: Bootstrap Alert.
+ * Register: Bootstrap Container.
  *
  * Registers a new block provided a unique name and an object defining its
  * behavior. Once registered, the block is made editor as an option to any
@@ -85,36 +64,25 @@ function  getClasses( props ) {
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered otherwise `undefined`.
  */
-registerBlockType( 'gutenstrap/alert', {
+registerBlockType( 'gutenstrap/container', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( 'Bootstrap Alert' ), // Block title.
-	icon: <FontAwesomeIcon icon={ faBell } />,
+	title: __( 'Bootstrap Container' ), // Block title.
+	icon: <FontAwesomeIcon icon={ faPhone } />,
 	category: 'gutenstrap', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
 	keywords: [
 		__( 'Gutenstrap' ),
 		__( 'Bootstrap' ),
-		__( 'Alert' ),
+		__( 'Container' ),
 	],
 	supports: {
 		className: false,
 	},
 
 	attributes: {
-		content: {
-			type: 'array',
-			source: 'children',
-			selector: '.alert-content',
-		},
-		themeType: {
-			type: 'string',
-		},
 		alignment: {
 			type: 'string',
 		},
-		dismissible: {
-			type: 'boolean',
-		},
-		allowNesting: {
+		isFluid: {
 			type: 'boolean',
 		},
 	},
@@ -136,41 +104,23 @@ registerBlockType( 'gutenstrap/alert', {
 		const {
 			content,
 			alignment,
-			themeType = themeTypes[0].value,
-			dismissible,
-			allowNesting,
+			isFluid,
 		} = props.attributes
 
 		const classes = getClasses( props )
 
 		return (
 			<div class="bootstrap-styles">
-				<div className={ classes } role="alert">
+				<div className={ classes }>
 					<InspectorControls>
 						<PanelBody
 							initialOpen={ true }
 							title={ __( 'Settings' ) }
 						>
-							<SelectControl
-								label={ __( 'Type' ) }
-								value={ themeType }
-								options={ themeTypes.map( ( { value, label } ) => ( {
-									value: value,
-									label: label,
-								} ) ) }
-								onChange={ newThemeType => setAttributes( { themeType: newThemeType } ) }
-							/>
-
 							<ToggleControl
-								label={ __( 'Dismissible' ) }
-								checked={ dismissible }
-								onChange={ () => setAttributes( { dismissible: ! dismissible } ) }
-							/>
-
-							<ToggleControl
-								label={ __( 'Allow nesting' ) }
-								checked={ allowNesting }
-								onChange={ () => setAttributes( { allowNesting: ! allowNesting } ) }
+								label={ __( 'Fluid' ) }
+								checked={ isFluid }
+								onChange={ () => setAttributes( { isFluid: ! isFluid } ) }
 							/>
 						</PanelBody>
 					</InspectorControls>
@@ -181,29 +131,11 @@ registerBlockType( 'gutenstrap/alert', {
 	                    />
 	                </BlockControls>
 
-	                { applyFilters( 'gutenstrap.alert.before', null, props ) }
+	                { applyFilters( 'gutenstrap.container.before', null, props ) }
 
-	                <div class="alert-content">
-						{ allowNesting ? (
-								<InnerBlocks />
-							) : (
-								<RichText
-									value={ content }
-									placeholder={ __('Enter message here...') }
-									keepPlaceholderOnFocus={ true }
-									onChange={ newContent => setAttributes( { content: filterContent( newContent ) } ) }
-								/>
-							)
-						}
-					</div>
+	                <InnerBlocks />
 
-					{ dismissible && (
-						<button type="button" class="close" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					) }
-
-					{ applyFilters( 'gutenstrap.alert.after', null, props ) }
+					{ applyFilters( 'gutenstrap.container.after', null, props ) }
 				</div>
 			</div>
 		)
@@ -224,34 +156,17 @@ registerBlockType( 'gutenstrap/alert', {
 
 		const {
 			content,
-			dismissible,
-			allowNesting,
 		} = props.attributes
 
 		const classes = getClasses( props )
 
 		return (
-			<div className={ classes } role="alert">
-				{ applyFilters( 'gutenstrap.alert.before', null, props ) }
+			<div className={ classes }>
+				{ applyFilters( 'gutenstrap.container.before', null, props ) }
 
-				<div class="alert-content">
-					{ allowNesting ? (
-							<InnerBlocks.Content />
-						) : (
-							<RichText.Content
-				                value={ content }
-				            />
-				        )
-			        }
-			    </div>
+				<InnerBlocks.Content />
 
-				{ dismissible && (
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				) }
-
-				{ applyFilters( 'gutenstrap.alert.after', null, props ) }
+				{ applyFilters( 'gutenstrap.container.after', null, props ) }
 			</div>
 		)
 	},
