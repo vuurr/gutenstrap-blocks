@@ -32,7 +32,7 @@ const {
  * @param  Obj     props Block properties
  * @return string
  */
-function  getClasses( props ) {
+function getClasses( props ) {
 	const {
 		className,
 	} = props

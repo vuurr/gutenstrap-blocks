@@ -1,0 +1,16 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+
+.gutenstrap-block-button {
+	display: inline-block;
+	position: relative;
+	margin-bottom: 1rem;
+
+	.btn-block + .btn-block {
+		margin-top: 0;
+	}
+}

@@ -1,0 +1,36 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+
+@mixin badge-variant($bg) {
+  color: color-yiq($bg);
+  background-color: $bg !important;
+
+  @at-root a#{&} {
+    @include hover-focus {
+      color: color-yiq($bg);
+      background-color: darken($bg, 10%) !important;
+    }
+
+    &:focus,
+    &.focus {
+      outline: 0;
+      box-shadow: 0 0 0 $badge-focus-width rgba($bg, .5);
+    }
+  }
+}
+
+.editor-rich-text {
+	@import '~bootstrap/scss/badge';
+
+	.badge-pill {
+		border-radius: $badge-pill-border-radius !important;
+	}
+}

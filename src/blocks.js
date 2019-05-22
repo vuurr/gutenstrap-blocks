@@ -13,8 +13,12 @@ import './editor.scss'
 
 // Components
 import './alert/index.js'
+import './button/index.js'
 
 // Layout
-import './container/index.js'
-import './row/index.js'
-import './column/index.js'
+// import './container/index.js'
+// import './row/index.js'
+// import './column/index.js'
+
+// Inline
+import './badge/index.js'

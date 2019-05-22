@@ -5,3 +5,33 @@
 		overflow: hidden;
 	}
 }
+
+.editor-format-toolbar {
+	&__inline-container-content {
+		display: flex;
+		align-items: stretch;
+
+		&__inner {
+			flex: 1 0 auto;
+			padding: 8px;
+
+			.components-base-control {
+				margin-bottom: 0;
+
+				&:last-child .components-base-control__field {
+					margin-bottom: 0;
+				}
+			}
+
+			.components-toggle-control__label {
+				margin-bottom: 0 !important;
+			}
+		}
+
+		.components-icon-button {
+			border-radius: 0;
+			flex-direction: column;
+			justify-content: flex-end;
+		}
+	}
+}

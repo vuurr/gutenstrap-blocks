@@ -1,5 +1,5 @@
 /**
- * BLOCK: Bootstrap Alert
+ * BLOCK: Bootstrap Button
  *
  */
 
@@ -8,8 +8,6 @@ import './style.scss'
 import './editor.scss'
 
 // Global import
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
 import classnames from 'classnames'
 import { applyFilters } from '@wordpress/hooks'
 
@@ -23,12 +21,16 @@ const {
 	BlockControls,
 	AlignmentToolbar,
 	InspectorControls,
-	InnerBlocks,
+	URLInput,
 } = wp.editor
 const {
 	PanelBody,
 	SelectControl,
 	ToggleControl,
+	Path,
+	SVG,
+	Dashicon,
+	IconButton,
 } = wp.components
 
 /**
@@ -38,7 +40,7 @@ const {
  * @return string
  */
 function filterContent( content ) {
-	content = applyFilters( 'gutenstrap.alert.content', content )
+	content = applyFilters( 'gutenstrap.button.content', content )
 
 	return content
 }
@@ -56,24 +58,21 @@ function getClasses( props ) {
 
 	const {
 		themeType = themeTypes[0].value,
-		alignment,
-		dismissible,
+		outline,
+		block,
 	} = props.attributes
 
 	return classnames( [
 		className,
-		'alert',
-		{ [ `alert-${ themeType }` ]: !! themeType },
-		{ [ `text-${ alignment }` ]: !! alignment },
-	], applyFilters( 'gutenstrap.alert.classes', {
-		'alert-dismissible': dismissible,
-		'fade': dismissible,
-		'show': dismissible,
+		'btn',
+		{ [ `btn-${ outline ? 'outline-' : '' }${ themeType }` ]: !! themeType },
+	], applyFilters( 'gutenstrap.button.classes', {
+		'btn-block': block,
 	}, props ) )
 }
 
 /**
- * Register: Bootstrap Alert.
+ * Register: Bootstrap Button.
  *
  * @link https://wordpress.org/gutenberg/handbook/block-api/
  * @param  {string}   name     Block name.
@@ -81,25 +80,31 @@ function getClasses( props ) {
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered otherwise `undefined`.
  */
-registerBlockType( 'gutenstrap/alert', {
+registerBlockType( 'gutenstrap/button', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( 'GS Alert' ), // Block title.
-	icon: <FontAwesomeIcon icon={ faExclamationTriangle } />,
+	title: __( 'GS Button' ), // Block title.
+	icon: <SVG viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><Path d="M19 6H5c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 10H5V8h14v8z" /></SVG>,
 	category: 'gutenstrap', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
 	keywords: [
 		__( 'Gutenstrap' ),
 		__( 'Bootstrap' ),
-		__( 'Alert' ),
+		__( 'Button' ),
 	],
 	supports: {
 		className: false,
 	},
 
 	attributes: {
-		content: {
-			type: 'array',
-			source: 'children',
-			selector: '.alert-content',
+		text: {
+			type: 'string',
+			source: 'html',
+			selector: 'a',
+		},
+		url: {
+			type: 'string',
+			source: 'attribute',
+			selector: 'a',
+			attribute: 'href',
 		},
 		themeType: {
 			type: 'string',
@@ -107,10 +112,10 @@ registerBlockType( 'gutenstrap/alert', {
 		alignment: {
 			type: 'string',
 		},
-		dismissible: {
+		outline: {
 			type: 'boolean',
 		},
-		allowNesting: {
+		block: {
 			type: 'boolean',
 		},
 	},
@@ -127,21 +132,23 @@ registerBlockType( 'gutenstrap/alert', {
 		const {
 			setAttributes,
 			className,
+			isSelected,
 		} = props
 
 		const {
-			content,
+			text,
+			url,
 			alignment,
 			themeType = themeTypes[0].value,
-			dismissible,
-			allowNesting,
+			outline,
+			block,
 		} = props.attributes
 
 		const classes = getClasses( props )
 
 		return (
-			<div class="bootstrap-styles">
-				<div className={ classes } role="alert">
+			<div class="bootstrap-styles" style={ { textAlign: alignment } }>
+				<div className={ classnames( 'gutenstrap-block-button', { 'btn-block': !! block, } ) }>
 					<InspectorControls>
 						<PanelBody
 							initialOpen={ true }
@@ -158,15 +165,15 @@ registerBlockType( 'gutenstrap/alert', {
 							/>
 
 							<ToggleControl
-								label={ __( 'Dismissible' ) }
-								checked={ dismissible }
-								onChange={ () => setAttributes( { dismissible: ! dismissible } ) }
+								label={ __( 'Outline' ) }
+								checked={ outline }
+								onChange={ () => setAttributes( { outline: ! outline } ) }
 							/>
 
 							<ToggleControl
-								label={ __( 'Allow nesting' ) }
-								checked={ allowNesting }
-								onChange={ () => setAttributes( { allowNesting: ! allowNesting } ) }
+								label={ __( 'Block' ) }
+								checked={ block }
+								onChange={ () => setAttributes( { block: ! block } ) }
 							/>
 						</PanelBody>
 					</InspectorControls>
@@ -177,26 +184,29 @@ registerBlockType( 'gutenstrap/alert', {
 						/>
 					</BlockControls>
 
-					<div class="alert-content">
-						{ allowNesting ? (
-								<InnerBlocks />
-							) : (
-								<RichText
-									value={ content }
-									placeholder={ __('Enter message here…') }
-									keepPlaceholderOnFocus
-									onChange={ ( value ) => setAttributes( { content: filterContent( value ) } ) }
-								/>
-							)
-						}
-					</div>
-
-					{ dismissible && (
-						<button type="button" class="close" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					) }
+					<RichText
+						placeholder={ __( 'Add text…' ) }
+						value={ text }
+						onChange={ ( value ) => setAttributes( { text: filterContent( value ) } ) }
+						formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
+						className={ classes }
+						keepPlaceholderOnFocus
+					/>
 				</div>
+
+				{ isSelected && (
+					<form
+						className="block-library-button__inline-link"
+						onSubmit={ ( event ) => event.preventDefault() }
+					>
+						<Dashicon icon="admin-links" />
+						<URLInput
+							value={ url }
+							onChange={ ( value ) => setAttributes( { url: value } ) }
+						/>
+						<IconButton icon="editor-break" label={ __( 'Apply' ) } type="submit" />
+					</form>
+				) }
 			</div>
 		)
 	},
@@ -211,32 +221,22 @@ registerBlockType( 'gutenstrap/alert', {
 	 */
 	save: function( props ) {
 		const {
-			content,
-			dismissible,
-			allowNesting,
+			text,
+			alignment,
+			url,
 		} = props.attributes
 
 		const classes = getClasses( props )
 
 		return (
-			<div className={ classes } role="alert">
-				<div class="alert-content">
-					{ allowNesting ? (
-							<InnerBlocks.Content />
-						) : (
-							<RichText.Content
-								value={ content }
-							/>
-						)
-					}
-				</div>
-
-				{ dismissible && (
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				) }
-			</div>
+			<p className={ classnames( { [ `text-${ alignment }` ]: !! alignment } ) }>
+				<RichText.Content
+					tagName="a"
+					className={ classes }
+					href={ url }
+					value={ text }
+				/>
+			</p>
 		)
 	},
 } )

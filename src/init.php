@@ -53,13 +53,6 @@ function gutenstrap_cgb_block_assets() { // phpcs:ignore
 		null // filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.editor.build.css' ) // Version: File modification time.
 	);
 
-	if (!wp_style_is('fontawesome')) {
-		wp_enqueue_style(
-			'fontawesome',
-			'https://use.fontawesome.com/releases/v5.8.1/css/all.css'
-		);
-	}
-
 	/**
 	 * Register Gutenberg block on server-side.
 	 *
@@ -92,7 +85,7 @@ function gutenstrap_category( $categories, $post ) {
 		array(
 			array(
 				'slug' => 'gutenstrap',
-				'title' => __( 'Gutenstrap Blocks', 'gutenstrap' ),
+				'title' => __( 'Gutenstrap', 'gutenstrap' ),
 			),
 		)
 	);
