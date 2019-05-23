@@ -1,12 +1,45 @@
 /**
- * #.# Editor Styles
+ * gutenstrap/row Editor Styles
  *
  * CSS for just Backend enqueued after style.scss
  * which makes it higher in priority.
  */
 
-.row {
-	> .editor-inner-blocks {
-		width: 100%;
+.block-editor-block-list__layout .block-editor-block-list__block[data-type="gutenstrap/row"] {
+	> .block-editor-block-list__block-edit {
+		&::before {
+			border-color: $block-border;
+			border-left-width: 1px;
+			border-left-style: solid;
+		}
+
+		&::after {
+			content: "row";
+			z-index: 0;
+			position: absolute;
+			right: -14px;
+			top: -14px;
+			background: $block-border;
+			pointer-events: none;
+			font-size: 10px;
+			line-height: 14px;
+			padding: 0 4px;
+			font-weight: 400;
+		}
 	}
+
+	&.is-selected > .block-editor-block-list__block-edit {
+		&::before {
+			border-color: $block-border-active;
+			border-left-color: transparent;
+		}
+
+		&::after {
+			background: $block-border-active;
+		}
+	}
+}
+
+.gutenstrap-block-row {
+	padding: 1px 7px;
 }

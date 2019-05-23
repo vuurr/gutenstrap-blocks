@@ -9,12 +9,12 @@ import './editor.scss'
 
 // Global import
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEdit } from '@fortawesome/free-solid-svg-icons'
+import { faColumns } from '@fortawesome/free-solid-svg-icons'
 import classnames from 'classnames'
-import { applyFilters } from '@wordpress/hooks'
 
-const { __ } = wp.i18n // Import __() from wp.i18n
-const { registerBlockType } = wp.blocks // Import registerBlockType() from wp.blocks
+const { __ } = wp.i18n
+const { applyFilters } = wp.hooks
+const { registerBlockType } = wp.blocks
 const {
     BlockControls,
     AlignmentToolbar,
@@ -53,10 +53,6 @@ function getClasses( props ) {
 /**
  * Register: Bootstrap Column.
  *
- * Registers a new block provided a unique name and an object defining its
- * behavior. Once registered, the block is made editor as an option to any
- * editor interface where blocks are implemented.
- *
  * @link https://wordpress.org/gutenberg/handbook/block-api/
  * @param  {string}   name     Block name.
  * @param  {Object}   settings Block settings.
@@ -65,8 +61,9 @@ function getClasses( props ) {
  */
 registerBlockType( 'gutenstrap/column', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( 'Bootstrap Column' ), // Block title.
-	icon: <FontAwesomeIcon icon={ faEdit } />,
+	title: __( 'GS Column' ),
+	description: __( 'In a grid layout, content must be placed within columns and only columns may be immediate children of rows.' ),
+	icon: <FontAwesomeIcon icon={ faColumns } />,
 	category: 'gutenstrap', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
 	keywords: [
 		__( 'Gutenstrap' ),
@@ -106,36 +103,28 @@ registerBlockType( 'gutenstrap/column', {
 			nogutters,
 		} = props.attributes
 
-		const classes = getClasses( props )
-
 		return (
-			<div class="bootstrap-styles">
-				<div className={ classes }>
-					<InspectorControls>
-						<PanelBody
-							initialOpen={ true }
-							title={ __( 'Settings' ) }
-						>
-							<ToggleControl
-								label={ __( 'No gutters' ) }
-								checked={ nogutters }
-								onChange={ () => setAttributes( { nogutters: ! nogutters } ) }
-							/>
-						</PanelBody>
-					</InspectorControls>
-					<BlockControls>
-	                    <AlignmentToolbar
-	                        value={ alignment }
-	                        onChange={ newAlignment => setAttributes( { alignment: newAlignment } ) }
-	                    />
-	                </BlockControls>
+			<div class="gutenstrap-block-column" style={ { textAlign: alignment } }>
+				<InspectorControls>
+					<PanelBody
+						initialOpen={ true }
+						title={ __( 'Settings' ) }
+					>
+						<ToggleControl
+							label={ __( 'No gutters' ) }
+							checked={ nogutters }
+							onChange={ () => setAttributes( { nogutters: ! nogutters } ) }
+						/>
+					</PanelBody>
+				</InspectorControls>
+				<BlockControls>
+                    <AlignmentToolbar
+                        value={ alignment }
+                        onChange={ newAlignment => setAttributes( { alignment: newAlignment } ) }
+                    />
+                </BlockControls>
 
-	                { applyFilters( 'gutenstrap.column.before', null, props ) }
-
-	                <InnerBlocks />
-
-					{ applyFilters( 'gutenstrap.column.after', null, props ) }
-				</div>
+                <InnerBlocks />
 			</div>
 		)
 	},
@@ -161,11 +150,7 @@ registerBlockType( 'gutenstrap/column', {
 
 		return (
 			<div className={ classes }>
-				{ applyFilters( 'gutenstrap.column.before', null, props ) }
-
 				<InnerBlocks.Content />
-
-				{ applyFilters( 'gutenstrap.column.after', null, props ) }
 			</div>
 		)
 	},

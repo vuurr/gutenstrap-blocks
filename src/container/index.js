@@ -9,21 +9,21 @@ import './editor.scss'
 
 // Global import
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPhone } from '@fortawesome/free-solid-svg-icons'
+import { faSquare } from '@fortawesome/free-regular-svg-icons'
 import classnames from 'classnames'
-import { applyFilters } from '@wordpress/hooks'
 
-const { __ } = wp.i18n // Import __() from wp.i18n
-const { registerBlockType } = wp.blocks // Import registerBlockType() from wp.blocks
+const { __ } = wp.i18n
+const { applyFilters } = wp.hooks
+const { registerBlockType } = wp.blocks
 const {
-    BlockControls,
-    AlignmentToolbar,
-    InspectorControls,
-    InnerBlocks,
+	BlockControls,
+	AlignmentToolbar,
+	InspectorControls,
+	InnerBlocks,
 } = wp.editor
 const {
-    PanelBody,
-    ToggleControl,
+	PanelBody,
+	ToggleControl,
 } = wp.components
 
 /**
@@ -54,10 +54,6 @@ function getClasses( props ) {
 /**
  * Register: Bootstrap Container.
  *
- * Registers a new block provided a unique name and an object defining its
- * behavior. Once registered, the block is made editor as an option to any
- * editor interface where blocks are implemented.
- *
  * @link https://wordpress.org/gutenberg/handbook/block-api/
  * @param  {string}   name     Block name.
  * @param  {Object}   settings Block settings.
@@ -66,8 +62,9 @@ function getClasses( props ) {
  */
 registerBlockType( 'gutenstrap/container', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( 'Bootstrap Container' ), // Block title.
-	icon: <FontAwesomeIcon icon={ faPhone } />,
+	title: __( 'GS Container' ),
+	description: __( 'Provide a means to center and horizontally pad your site’s contents.' ),
+	icon: <FontAwesomeIcon icon={ faSquare } />,
 	category: 'gutenstrap', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
 	keywords: [
 		__( 'Gutenstrap' ),
@@ -79,6 +76,10 @@ registerBlockType( 'gutenstrap/container', {
 	},
 
 	attributes: {
+		content: {
+			type: 'array',
+			source: 'children',
+		},
 		alignment: {
 			type: 'string',
 		},
@@ -107,36 +108,28 @@ registerBlockType( 'gutenstrap/container', {
 			isFluid,
 		} = props.attributes
 
-		const classes = getClasses( props )
-
 		return (
-			<div class="bootstrap-styles">
-				<div className={ classes }>
-					<InspectorControls>
-						<PanelBody
-							initialOpen={ true }
-							title={ __( 'Settings' ) }
-						>
-							<ToggleControl
-								label={ __( 'Fluid' ) }
-								checked={ isFluid }
-								onChange={ () => setAttributes( { isFluid: ! isFluid } ) }
-							/>
-						</PanelBody>
-					</InspectorControls>
-					<BlockControls>
-	                    <AlignmentToolbar
-	                        value={ alignment }
-	                        onChange={ newAlignment => setAttributes( { alignment: newAlignment } ) }
-	                    />
-	                </BlockControls>
+			<div class="gutenstrap-block-container" style={ { textAlign: alignment } }>
+				<InspectorControls>
+					<PanelBody
+						initialOpen={ true }
+						title={ __( 'Settings' ) }
+					>
+						<ToggleControl
+							label={ __( 'Fluid' ) }
+							checked={ isFluid }
+							onChange={ () => setAttributes( { isFluid: ! isFluid } ) }
+						/>
+					</PanelBody>
+				</InspectorControls>
+				<BlockControls>
+					<AlignmentToolbar
+						value={ alignment }
+						onChange={ newAlignment => setAttributes( { alignment: newAlignment } ) }
+					/>
+				</BlockControls>
 
-	                { applyFilters( 'gutenstrap.container.before', null, props ) }
-
-	                <InnerBlocks />
-
-					{ applyFilters( 'gutenstrap.container.after', null, props ) }
-				</div>
+				<InnerBlocks />
 			</div>
 		)
 	},
@@ -162,11 +155,7 @@ registerBlockType( 'gutenstrap/container', {
 
 		return (
 			<div className={ classes }>
-				{ applyFilters( 'gutenstrap.container.before', null, props ) }
-
 				<InnerBlocks.Content />
-
-				{ applyFilters( 'gutenstrap.container.after', null, props ) }
 			</div>
 		)
 	},

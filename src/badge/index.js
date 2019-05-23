@@ -9,12 +9,12 @@ import './editor.scss'
 
 // Global import
 import classnames from 'classnames'
-import { applyFilters } from '@wordpress/hooks'
 
 // Import common
 import { bootstrapIcon, themeTypes, PopoverAtObj } from '../common.js'
 
-const { __ } = wp.i18n // Import __() from wp.i18n
+const { __ } = wp.i18n
+const { applyFilters } = wp.hooks
 const { LEFT, RIGHT, UP, DOWN, BACKSPACE, ENTER } = wp.keycodes
 const { Component, Fragment } = wp.element
 const { registerFormatType, toggleFormat, applyFormat } = wp.richText
@@ -42,7 +42,7 @@ const tag = 'span'
 
 registerFormatType( name, {
 	// Format name. Format names must be string that contains a namespace prefix. Example: my-plugin/my-custom-format.
-	title: title, // Format title.
+	title: title,
 	keywords: [
 		__( 'Gutenstrap' ),
 		__( 'Bootstrap' ),

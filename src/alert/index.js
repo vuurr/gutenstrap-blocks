@@ -11,12 +11,12 @@ import './editor.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
 import classnames from 'classnames'
-import { applyFilters } from '@wordpress/hooks'
 
 // Import common
 import { themeTypes } from '../common.js'
 
 const { __ } = wp.i18n
+const { applyFilters } = wp.hooks
 const { registerBlockType } = wp.blocks
 const {
 	RichText,
@@ -83,7 +83,8 @@ function getClasses( props ) {
  */
 registerBlockType( 'gutenstrap/alert', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( 'GS Alert' ), // Block title.
+	title: __( 'GS Alert' ),
+	description: __( 'Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.' ),
 	icon: <FontAwesomeIcon icon={ faExclamationTriangle } />,
 	category: 'gutenstrap', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
 	keywords: [

@@ -9,12 +9,12 @@ import './editor.scss'
 
 // Global import
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar } from '@fortawesome/free-solid-svg-icons'
+import { faMinus } from '@fortawesome/free-solid-svg-icons'
 import classnames from 'classnames'
-import { applyFilters } from '@wordpress/hooks'
 
-const { __ } = wp.i18n // Import __() from wp.i18n
-const { registerBlockType } = wp.blocks // Import registerBlockType() from wp.blocks
+const { __ } = wp.i18n
+const { applyFilters } = wp.hooks
+const { registerBlockType } = wp.blocks
 const {
     BlockControls,
     AlignmentToolbar,
@@ -47,16 +47,12 @@ function getClasses( props ) {
 		'row',
 		{ [ `text-${ alignment }` ]: !!alignment }
 	], applyFilters( 'gutenstrap.row.classes', {
-		'nogutters': nogutters,
+		'no-gutters': nogutters,
 	}, props ) )
 }
 
 /**
  * Register: Bootstrap Row.
- *
- * Registers a new block provided a unique name and an object defining its
- * behavior. Once registered, the block is made editor as an option to any
- * editor interface where blocks are implemented.
  *
  * @link https://wordpress.org/gutenberg/handbook/block-api/
  * @param  {string}   name     Block name.
@@ -66,8 +62,9 @@ function getClasses( props ) {
  */
 registerBlockType( 'gutenstrap/row', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( 'Bootstrap Row' ), // Block title.
-	icon: <FontAwesomeIcon icon={ faStar } />,
+	title: __( 'GS Row' ),
+	description: __( 'Rows are wrappers for columns.' ),
+	icon: <FontAwesomeIcon icon={ faMinus } />,
 	category: 'gutenstrap', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
 	keywords: [
 		__( 'Gutenstrap' ),
@@ -107,36 +104,28 @@ registerBlockType( 'gutenstrap/row', {
 			nogutters,
 		} = props.attributes
 
-		const classes = getClasses( props )
-
 		return (
-			<div class="bootstrap-styles">
-				<div className={ classes }>
-					<InspectorControls>
-						<PanelBody
-							initialOpen={ true }
-							title={ __( 'Settings' ) }
-						>
-							<ToggleControl
-								label={ __( 'No gutters' ) }
-								checked={ nogutters }
-								onChange={ () => setAttributes( { nogutters: ! nogutters } ) }
-							/>
-						</PanelBody>
-					</InspectorControls>
-					<BlockControls>
-	                    <AlignmentToolbar
-	                        value={ alignment }
-	                        onChange={ newAlignment => setAttributes( { alignment: newAlignment } ) }
-	                    />
-	                </BlockControls>
+			<div class="gutenstrap-block-row" style={ { textAlign: alignment } }>
+				<InspectorControls>
+					<PanelBody
+						initialOpen={ true }
+						title={ __( 'Settings' ) }
+					>
+						<ToggleControl
+							label={ __( 'No gutters' ) }
+							checked={ nogutters }
+							onChange={ () => setAttributes( { nogutters: ! nogutters } ) }
+						/>
+					</PanelBody>
+				</InspectorControls>
+				<BlockControls>
+                    <AlignmentToolbar
+                        value={ alignment }
+                        onChange={ newAlignment => setAttributes( { alignment: newAlignment } ) }
+                    />
+                </BlockControls>
 
-	                { applyFilters( 'gutenstrap.row.before', null, props ) }
-
-	                <InnerBlocks />
-
-					{ applyFilters( 'gutenstrap.row.after', null, props ) }
-				</div>
+                <InnerBlocks />
 			</div>
 		)
 	},
@@ -162,11 +151,7 @@ registerBlockType( 'gutenstrap/row', {
 
 		return (
 			<div className={ classes }>
-				{ applyFilters( 'gutenstrap.row.before', null, props ) }
-
 				<InnerBlocks.Content />
-
-				{ applyFilters( 'gutenstrap.row.after', null, props ) }
 			</div>
 		)
 	},
