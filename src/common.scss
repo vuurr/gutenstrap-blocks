@@ -5,5 +5,9 @@
  * that are used across the project.
 */
 
-$block-border: rgba(66,88,99,.1);
-$block-border-active: rgba(66,88,99,.4);
+$gray-700: #425863;
+$white: #fff;
+
+$block-border: rgba($gray-700,0.1);
+$block-border-active: rgba($gray-700,0.4);
+

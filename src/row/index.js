@@ -24,6 +24,7 @@ const {
 const {
     PanelBody,
     ToggleControl,
+    SelectControl,
 } = wp.components
 
 /**
@@ -40,13 +41,17 @@ function getClasses( props ) {
 	const {
 		alignment,
 		nogutters,
+		alignItems,
+		justifyContent,
 	} = props.attributes
 
 	return classnames( [
 		className,
 		'row',
-		{ [ `text-${ alignment }` ]: !!alignment }
 	], applyFilters( 'gutenstrap.row.classes', {
+		[ `text-${ alignment }` ]: !! alignment,
+		[ `align-items-${ alignItems }` ]: !! alignItems,
+		[ `justify-content-${ justifyContent }` ]: !! justifyContent,
 		'no-gutters': nogutters,
 	}, props ) )
 }
@@ -82,6 +87,12 @@ registerBlockType( 'gutenstrap/row', {
 		nogutters: {
 			type: 'boolean',
 		},
+		alignItems: {
+			type: 'string',
+		},
+		justifyContent: {
+			type: 'string',
+		},
 	},
 
 	/**
@@ -102,6 +113,8 @@ registerBlockType( 'gutenstrap/row', {
 			content,
 			alignment,
 			nogutters,
+			alignItems,
+			justifyContent,
 		} = props.attributes
 
 		return (
@@ -111,6 +124,32 @@ registerBlockType( 'gutenstrap/row', {
 						initialOpen={ true }
 						title={ __( 'Settings' ) }
 					>
+						<SelectControl
+							label={ __( 'Vertical alignment' ) }
+							value={ alignItems }
+							options={ [
+								{ value: null, label: __( 'None' ) },
+								{ value: 'start', label: __( 'Start' ) },
+								{ value: 'center', label: __( 'Center' ) },
+								{ value: 'end', label: __( 'End' ) },
+							] }
+							onChange={ ( value ) => setAttributes( { alignItems: value } ) }
+						/>
+
+						<SelectControl
+							label={ __( 'Horizontal alignment' ) }
+							value={ justifyContent }
+							options={ [
+								{ value: null, label: __( 'None' ) },
+								{ value: 'start', label: __( 'Start' ) },
+								{ value: 'center', label: __( 'Center' ) },
+								{ value: 'end', label: __( 'End' ) },
+								{ value: 'around', label: __( 'Space around' ) },
+								{ value: 'between', label: __( 'Space between' ) },
+							] }
+							onChange={ ( value ) => setAttributes( { justifyContent: value } ) }
+						/>
+
 						<ToggleControl
 							label={ __( 'No gutters' ) }
 							checked={ nogutters }
@@ -139,14 +178,6 @@ registerBlockType( 'gutenstrap/row', {
 	 * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
 	 */
 	save: function( props ) {
-		const {
-			className,
-		} = props
-
-		const {
-			content,
-		} = props.attributes
-
 		const classes = getClasses( props )
 
 		return (

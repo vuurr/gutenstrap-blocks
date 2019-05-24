@@ -45,8 +45,8 @@ function getClasses( props ) {
 	return classnames( [
 		className,
 		'col',
-		{ [ `text-${ alignment }` ]: !!alignment }
 	], applyFilters( 'gutenstrap.column.classes', {
+		[ `text-${ alignment }` ]: !! alignment
 	}, props ) )
 }
 
@@ -138,14 +138,6 @@ registerBlockType( 'gutenstrap/column', {
 	 * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
 	 */
 	save: function( props ) {
-		const {
-			className,
-		} = props
-
-		const {
-			content,
-		} = props.attributes
-
 		const classes = getClasses( props )
 
 		return (

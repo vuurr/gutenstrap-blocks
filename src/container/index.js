@@ -44,10 +44,12 @@ function getClasses( props ) {
 
 	return classnames( [
 		className,
-		{ [ `text-${ alignment }` ]: !!alignment }
+		{
+			'container': ! isFluid,
+			'container-fluid': isFluid
+		},
 	], applyFilters( 'gutenstrap.container.classes', {
-		'container': ! isFluid,
-		'container-fluid': isFluid,
+		[ `text-${ alignment }` ]: !! alignment
 	}, props ) )
 }
 
@@ -143,14 +145,6 @@ registerBlockType( 'gutenstrap/container', {
 	 * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
 	 */
 	save: function( props ) {
-		const {
-			className,
-		} = props
-
-		const {
-			content,
-		} = props.attributes
-
 		const classes = getClasses( props )
 
 		return (

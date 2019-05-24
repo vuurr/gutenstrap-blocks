@@ -64,8 +64,8 @@ function getClasses( props ) {
 		className,
 		'alert',
 		{ [ `alert-${ themeType }` ]: !! themeType },
-		{ [ `text-${ alignment }` ]: !! alignment },
 	], applyFilters( 'gutenstrap.alert.classes', {
+		[ `text-${ alignment }` ]: !! alignment,
 		'alert-dismissible': dismissible,
 		'fade': dismissible,
 		'show': dismissible,
@@ -152,8 +152,8 @@ registerBlockType( 'gutenstrap/alert', {
 								label={ __( 'Type' ) }
 								value={ themeType }
 								options={ themeTypes.map( ( { value, label } ) => ( {
-									value: value,
-									label: label,
+									value,
+									label,
 								} ) ) }
 								onChange={ ( value ) => setAttributes( { themeType: value } ) }
 							/>

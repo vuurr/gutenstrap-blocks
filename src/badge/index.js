@@ -174,8 +174,8 @@ registerFormatType( name, {
 									<SelectControl
 										value={ this.state.themeType }
 										options={ themeTypes.map( ( { value, label } ) => ( {
-											value: value,
-											label: label,
+											value,
+											label,
 										} ) ) }
 										onChange={ ( themeType ) => this.setState( { themeType } ) }
 									/>

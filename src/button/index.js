@@ -73,9 +73,9 @@ function getClasses( props ) {
 		className,
 		'btn',
 		{ [ `btn-${ outline ? 'outline-' : '' }${ themeType }` ]: !! themeType },
-		{ [ `btn-${ size }` ]: !! size },
 	], applyFilters( 'gutenstrap.button.classes', {
 		'btn-block': block,
+		[ `btn-${ size }` ]: !! size
 	}, props ) )
 }
 
@@ -187,8 +187,8 @@ registerBlockType( 'gutenstrap/button', {
 								label={ __( 'Type' ) }
 								value={ themeType }
 								options={ themeTypes.map( ( { value, label } ) => ( {
-									value: value,
-									label: label,
+									value,
+									label,
 								} ) ) }
 								onChange={ ( value ) => setAttributes( { themeType: value } ) }
 							/>
