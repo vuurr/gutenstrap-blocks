@@ -43,4 +43,39 @@
 
 .gutenstrap-block-column {
 	padding: 1px 7px;
+
+	&__popover {
+		padding: 8px 7px 0;
+		display: flex;
+		align-items: center;
+
+		.components-range-control {
+			flex: 1 1 auto;
+
+			&__number {
+				display: none;
+			}
+
+			&__slider {
+				margin-top: 0.25em;
+			}
+		}
+
+		&__value {
+			border-radius: 50%;
+			text-align: center;
+			background: $gray-700;
+			color: $white;
+			width: 1.75em;
+			height: 1.75em;
+			margin: 0 7px 8px 0;
+			line-height: 1.75;
+			font-size: 0.875em;
+			opacity: 0.3;
+
+			&.active {
+				opacity: 1;
+			}
+		}
+	}
 }

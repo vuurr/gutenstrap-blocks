@@ -35,3 +35,27 @@
 		}
 	}
 }
+
+.components-button-group {
+	> div {
+		display: inline-flex;
+		position: relative;
+
+		.components-button.is-button:last-child {
+			border-radius: 0;
+		}
+
+		&:last-child .components-button.is-button {
+			border-radius: 0 3px 3px 0;
+		}
+	}
+
+	.components-button.is-button + div,
+	> div + div {
+		margin-left: -1px;
+	}
+}
+
+.fa-rotate-270 {
+	margin: 0 0.1875em;
+}

@@ -16,22 +16,22 @@ const { __ } = wp.i18n
 const { applyFilters } = wp.hooks
 const { registerBlockType } = wp.blocks
 const {
-    BlockControls,
-    AlignmentToolbar,
-    InspectorControls,
-    InnerBlocks,
+	BlockControls,
+	AlignmentToolbar,
+	InspectorControls,
+	InnerBlocks,
 } = wp.editor
 const {
-    PanelBody,
-    ToggleControl,
-    SelectControl,
+	PanelBody,
+	ToggleControl,
+	SelectControl,
 } = wp.components
 
 /**
  * Create list of classes for class property
  *
- * @param  Obj     props Block properties
- * @return string
+ * @param  {Object}  props Block properties
+ * @return {string}
  */
 function getClasses( props ) {
 	const {
@@ -158,13 +158,13 @@ registerBlockType( 'gutenstrap/row', {
 					</PanelBody>
 				</InspectorControls>
 				<BlockControls>
-                    <AlignmentToolbar
-                        value={ alignment }
-                        onChange={ newAlignment => setAttributes( { alignment: newAlignment } ) }
-                    />
-                </BlockControls>
+					<AlignmentToolbar
+						value={ alignment }
+						onChange={ ( value ) => setAttributes( { alignment: value } ) }
+					/>
+				</BlockControls>
 
-                <InnerBlocks />
+				<InnerBlocks />
 			</div>
 		)
 	},

@@ -12,25 +12,28 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faColumns } from '@fortawesome/free-solid-svg-icons'
 import classnames from 'classnames'
 
+// Local imoprt
+import { ColumnSizeSelect } from './components.js'
+
 const { __ } = wp.i18n
 const { applyFilters } = wp.hooks
 const { registerBlockType } = wp.blocks
 const {
-    BlockControls,
-    AlignmentToolbar,
-    InspectorControls,
-    InnerBlocks,
+	BlockControls,
+	AlignmentToolbar,
+	InspectorControls,
+	InnerBlocks,
 } = wp.editor
 const {
-    PanelBody,
-    ToggleControl,
+	PanelBody,
+	ToggleControl,
 } = wp.components
 
 /**
  * Create list of classes for class property
  *
- * @param  Obj     props Block properties
- * @return string
+ * @param  {Object}  props Block properties
+ * @return {string}
  */
 function getClasses( props ) {
 	const {
@@ -78,8 +81,11 @@ registerBlockType( 'gutenstrap/column', {
 		alignment: {
 			type: 'string',
 		},
-		nogutters: {
-			type: 'boolean',
+		col: {
+			type: 'object',
+			default: {
+				xs: { size: 'equal' }
+			},
 		},
 	},
 
@@ -100,7 +106,7 @@ registerBlockType( 'gutenstrap/column', {
 		const {
 			content,
 			alignment,
-			nogutters,
+			col,
 		} = props.attributes
 
 		return (
@@ -110,21 +116,20 @@ registerBlockType( 'gutenstrap/column', {
 						initialOpen={ true }
 						title={ __( 'Settings' ) }
 					>
-						<ToggleControl
-							label={ __( 'No gutters' ) }
-							checked={ nogutters }
-							onChange={ () => setAttributes( { nogutters: ! nogutters } ) }
+						<ColumnSizeSelect
+							value={ col }
+							onChange={ ( value ) => setAttributes( { col: { ...col, ...value } } ) }
 						/>
 					</PanelBody>
 				</InspectorControls>
 				<BlockControls>
-                    <AlignmentToolbar
-                        value={ alignment }
-                        onChange={ newAlignment => setAttributes( { alignment: newAlignment } ) }
-                    />
-                </BlockControls>
+					<AlignmentToolbar
+						value={ alignment }
+						onChange={ ( value ) => setAttributes( { alignment: value } ) }
+					/>
+				</BlockControls>
 
-                <InnerBlocks />
+				<InnerBlocks />
 			</div>
 		)
 	},

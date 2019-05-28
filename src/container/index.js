@@ -29,8 +29,8 @@ const {
 /**
  * Create list of classes for class property
  *
- * @param  Obj     props Block properties
- * @return string
+ * @param  {Object}  props Block properties
+ * @return {string}
  */
 function getClasses( props ) {
 	const {
@@ -127,7 +127,7 @@ registerBlockType( 'gutenstrap/container', {
 				<BlockControls>
 					<AlignmentToolbar
 						value={ alignment }
-						onChange={ newAlignment => setAttributes( { alignment: newAlignment } ) }
+						onChange={ ( value ) => setAttributes( { alignment: value } ) }
 					/>
 				</BlockControls>
 

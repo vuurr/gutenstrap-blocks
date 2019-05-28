@@ -34,8 +34,8 @@ const {
 /**
  * Filter block content
  *
- * @param  string  content
- * @return string
+ * @param  {string}  content
+ * @return {string}
  */
 function filterContent( content ) {
 	content = applyFilters( 'gutenstrap.alert.content', content )
@@ -46,8 +46,8 @@ function filterContent( content ) {
 /**
  * Create list of classes for class property
  *
- * @param  Obj     props Block properties
- * @return string
+ * @param  {Object}  props Block properties
+ * @return {string}
  */
 function getClasses( props ) {
 	const {
