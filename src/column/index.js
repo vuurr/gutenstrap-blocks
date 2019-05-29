@@ -12,6 +12,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faColumns } from '@fortawesome/free-solid-svg-icons'
 import classnames from 'classnames'
 
+// Import common
+import { utils } from '../common.js'
+
 // Local imoprt
 import { ColumnSizeSelect } from './components.js'
 
@@ -42,12 +45,29 @@ function getClasses( props ) {
 
 	const {
 		alignment,
-		nogutters,
+		col,
 	} = props.attributes
+
+	let colClasses = []
+	if ( utils.isObj( col ) ) {
+		Object.keys( col ).forEach( ( breakpoint ) => {
+			if ( utils.isObj( col[ breakpoint ] ) ) {
+				let infix = breakpoint !== 'xs' ? '-' + breakpoint : ''
+
+				if ( col[ breakpoint ].size !== undefined ) {
+					colClasses.push( 'col' + infix + ( col[ breakpoint ].size !== 'equal' ? '-' + col[ breakpoint ].size : '' ) )
+				}
+
+				if ( col[ breakpoint ].offset !== undefined && ( infix || col[ breakpoint ].offset !== 0 ) ) {
+					colClasses.push( 'offset' + infix + '-' + col[ breakpoint ].offset )
+				}
+			}
+		} )
+	}
 
 	return classnames( [
 		className,
-		'col',
+		...colClasses,
 	], applyFilters( 'gutenstrap.column.classes', {
 		[ `text-${ alignment }` ]: !! alignment
 	}, props ) )
@@ -83,9 +103,7 @@ registerBlockType( 'gutenstrap/column', {
 		},
 		col: {
 			type: 'object',
-			default: {
-				xs: { size: 'equal' }
-			},
+			default: {},
 		},
 	},
 

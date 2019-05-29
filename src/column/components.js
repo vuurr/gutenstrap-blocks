@@ -19,6 +19,8 @@ const columnStaticSizes = [
 	{ value: 'auto', label: __( 'Auto' ) },
 ]
 
+console.log( gridOptions )
+
 /**
  * Column size selector component
  */
@@ -142,7 +144,7 @@ class BreakpointColumnSizeSelect extends Component {
 						param="offset"
 						value={ this.props.value }
 						label={ __( 'Offset' ) }
-						min={ 1 }
+						min={ 0 }
 						max={ gridOptions.columnsNumber - 1 }
 						onChange={ ( value ) => this.props.onChange && this.props.onChange( value ) }
 					/>

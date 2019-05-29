@@ -26,13 +26,15 @@ export const themeTypes = applyFilters( 'gutenstrap.theme.types', [
 ] )
 
 export const gridOptions = {
-	breakpoints: applyFilters( 'gutenstrap.grid.breakpoints', [
+	breakpoints: [
 		{ value: 'xs', label: __('Extra small'), icon: <FontAwesomeIcon icon={ faMobileAlt } /> },
-		{ value: 'sm', label: __('Small'), icon: <FontAwesomeIcon icon={ faMobileAlt } rotation={ 270 } /> },
-		{ value: 'md', label: __('Medium'), icon: <FontAwesomeIcon icon={ faTabletAlt } /> },
-		{ value: 'lg', label: __('Large'), icon: <FontAwesomeIcon icon={ faLaptop } /> },
-		{ value: 'xl', label: __('Extra large'), icon: <FontAwesomeIcon icon={ faDesktop } /> },
-	] ),
+		...applyFilters( 'gutenstrap.grid.breakpoints', [
+			{ value: 'sm', label: __('Small'), icon: <FontAwesomeIcon icon={ faMobileAlt } rotation={ 270 } /> },
+			{ value: 'md', label: __('Medium'), icon: <FontAwesomeIcon icon={ faTabletAlt } /> },
+			{ value: 'lg', label: __('Large'), icon: <FontAwesomeIcon icon={ faLaptop } /> },
+			{ value: 'xl', label: __('Extra large'), icon: <FontAwesomeIcon icon={ faDesktop } /> },
+		] ),
+	],
 	columnsNumber: applyFilters( 'gutenstrap.grid.columns', 12 ),
 }
 
