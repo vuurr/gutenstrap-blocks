@@ -6,6 +6,11 @@
  */
 
 .block-editor-block-list__layout .block-editor-block-list__block[data-type="gutenstrap/container"] {
+	> .block-editor-block-drop-zone {
+		margin: 0 2px;
+		top: -22px;
+	}
+
 	> .block-editor-block-list__block-edit {
 		&::before {
 			border-color: $block-border;

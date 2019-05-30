@@ -3,8 +3,7 @@
  *
  */
 
-//  Import CSS.
-import './style.scss'
+//  Import CSS
 import './editor.scss'
 
 // Global import
@@ -25,6 +24,8 @@ const {
 	SelectControl,
 	ToggleControl,
 	IconButton,
+	SVG,
+	Path,
 } = wp.components
 
 /**
@@ -134,7 +135,7 @@ registerFormatType( name, {
 			return (
 				<Fragment>
 					<RichTextToolbarButton
-						icon={ bootstrapIcon }
+						icon={ <SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 71 78"><Path d="M33 40.8 39.8 40.8 36.4 30.6 z"/><Path d="M54 7.8H17c-5.2 0-9.5 4.3-9.5 9.6v43.1c0 5.3 4.3 9.6 9.5 9.6H54c5.2 0 9.5-4.3 9.5-9.6V17.4C63.5 12.2 59.2 7.8 54 7.8zM43.1 51l-1.9-5.6h-9.7L29.7 51h-5.9l10-27.3H39L49 51H43.1z"/></SVG> }
 						title={ title }
 						isActive={ isActive }
 						onClick={ () => {

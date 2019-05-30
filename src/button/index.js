@@ -3,15 +3,14 @@
  *
  */
 
-//  Import CSS.
-import './style.scss'
+//  Import CSS
 import './editor.scss'
 
 // Global import
 import classnames from 'classnames'
 
 // Import common
-import { themeTypes, ButtonGroupSelect } from '../common.js'
+import { themeTypes, ButtonGroupSelect, SupportMe } from '../common.js'
 
 const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks
@@ -211,6 +210,8 @@ registerBlockType( 'gutenstrap/button', {
 								options={ sizes }
 								onChange={ ( value ) => setAttributes( { size: value } ) }
 							/>
+
+							<SupportMe />
 						</PanelBody>
 					</InspectorControls>
 					<BlockControls>

@@ -1,9 +1,9 @@
 <?php
 /**
  * Plugin Name: Gutenstrap
- * Plugin URI: https://eolant.me/
+ * Plugin URI: https://wordpress.org/plugins/gutenstrap/
  * Description: Collection of Bootstrap 4 blocks for Gutenberg WordPress Editor
- * Author: eolant
+ * Author: Vitaly Kasymov
  * Author URI: https://eolant.me/
  * Version: 1.0.0
  * License: GPL2+

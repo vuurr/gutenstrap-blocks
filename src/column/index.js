@@ -3,8 +3,7 @@
  *
  */
 
-//  Import CSS.
-import './style.scss'
+//  Import CSS
 import './editor.scss'
 
 // Global import
@@ -13,7 +12,7 @@ import { faColumns } from '@fortawesome/free-solid-svg-icons'
 import classnames from 'classnames'
 
 // Import common
-import { utils } from '../common.js'
+import { utils, SupportMe } from '../common.js'
 
 // Local imoprt
 import { ColumnSizeSelect } from './components.js'
@@ -138,6 +137,8 @@ registerBlockType( 'gutenstrap/column', {
 							value={ col }
 							onChange={ ( value ) => setAttributes( { col: { ...col, ...value } } ) }
 						/>
+
+						<SupportMe />
 					</PanelBody>
 				</InspectorControls>
 				<BlockControls>

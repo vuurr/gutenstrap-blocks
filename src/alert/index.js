@@ -3,8 +3,7 @@
  *
  */
 
-//  Import CSS.
-import './style.scss'
+//  Import CSS
 import './editor.scss'
 
 // Global import
@@ -13,7 +12,7 @@ import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
 import classnames from 'classnames'
 
 // Import common
-import { themeTypes } from '../common.js'
+import { themeTypes, SupportMe } from '../common.js'
 
 const { __ } = wp.i18n
 const { applyFilters } = wp.hooks
@@ -169,6 +168,8 @@ registerBlockType( 'gutenstrap/alert', {
 								checked={ allowNesting }
 								onChange={ () => setAttributes( { allowNesting: ! allowNesting } ) }
 							/>
+
+							<SupportMe />
 						</PanelBody>
 					</InspectorControls>
 					<BlockControls>

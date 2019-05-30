@@ -3,14 +3,16 @@
  *
  */
 
-//  Import CSS.
-import './style.scss'
+//  Import CSS
 import './editor.scss'
 
 // Global import
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMinus } from '@fortawesome/free-solid-svg-icons'
 import classnames from 'classnames'
+
+// Import common
+import { SupportMe } from '../common.js'
 
 const { __ } = wp.i18n
 const { applyFilters } = wp.hooks
@@ -155,6 +157,8 @@ registerBlockType( 'gutenstrap/row', {
 							checked={ nogutters }
 							onChange={ () => setAttributes( { nogutters: ! nogutters } ) }
 						/>
+
+						<SupportMe />
 					</PanelBody>
 				</InspectorControls>
 				<BlockControls>

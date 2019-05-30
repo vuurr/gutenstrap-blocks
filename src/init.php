@@ -21,24 +21,19 @@ if ( ! defined( 'ABSPATH' ) ) {
  * 2. blocks.build.js - Backend.
  * 3. blocks.editor.build.css - Backend.
  *
- * @uses {wp-blocks} for block type registration & related functions.
- * @uses {wp-element} for WP Element abstraction — structure of blocks.
- * @uses {wp-i18n} to internationalize the block's text.
- * @uses {wp-editor} for WP editor styles.
- * @since 1.0.0
  */
 function gutenstrap_cgb_block_assets() { // phpcs:ignore
 	// Register block styles for both frontend + backend.
-	wp_register_style(
-		'gutenstrap-cgb-style-css', // Handle.
-		plugins_url( 'dist/blocks.style.build.css', dirname( __FILE__ ) ), // Block style CSS.
-		array( 'wp-editor' ), // Dependency to include the CSS after it.
-		null // filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.style.build.css' ) // Version: File modification time.
-	);
+	// wp_register_style(
+	// 	'gutenstrap-style-css', // Handle.
+	// 	plugins_url( 'dist/blocks.style.build.css', dirname( __FILE__ ) ), // Block style CSS.
+	// 	array( 'wp-editor' ), // Dependency to include the CSS after it.
+	// 	null // filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.style.build.css' ) // Version: File modification time.
+	// );
 
 	// Register block editor script for backend.
 	wp_register_script(
-		'gutenstrap-cgb-block-js', // Handle.
+		'gutenstrap-block-js', // Handle.
 		plugins_url( '/dist/blocks.build.js', dirname( __FILE__ ) ), // Block.build.js: We register the block here. Built with Webpack.
 		array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor' ), // Dependencies, defined above.
 		null, // filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.build.js' ), // Version: filemtime — Gets file modification time.
@@ -47,7 +42,7 @@ function gutenstrap_cgb_block_assets() { // phpcs:ignore
 
 	// Register block editor styles for backend.
 	wp_register_style(
-		'gutenstrap-cgb-block-editor-css', // Handle.
+		'gutenstrap-block-editor-css', // Handle.
 		plugins_url( 'dist/blocks.editor.build.css', dirname( __FILE__ ) ), // Block editor CSS.
 		array( 'wp-edit-blocks' ), // Dependency to include the CSS after it.
 		null // filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.editor.build.css' ) // Version: File modification time.
@@ -64,13 +59,13 @@ function gutenstrap_cgb_block_assets() { // phpcs:ignore
 	 * @since 1.16.0
 	 */
 	register_block_type(
-		'cgb/block-gutenstrap', array(
+		'gutenstrap/alert', array(
 			// Enqueue blocks.style.build.css on both frontend & backend.
-			'style'         => 'gutenstrap-cgb-style-css',
+			// 'style'         => 'gutenstrap-style-css',
 			// Enqueue blocks.build.js in the editor only.
-			'editor_script' => 'gutenstrap-cgb-block-js',
+			'editor_script' => 'gutenstrap-block-js',
 			// Enqueue blocks.editor.build.css in the editor only.
-			'editor_style'  => 'gutenstrap-cgb-block-editor-css',
+			'editor_style'  => 'gutenstrap-block-editor-css',
 		)
 	);
 }
