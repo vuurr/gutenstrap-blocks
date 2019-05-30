@@ -13,24 +13,24 @@ const {
 } = wp.components
 
 export const themeTypes = applyFilters( 'gutenstrap.theme.types', [
-	{ value: 'primary', label: __('Primary') },
-	{ value: 'secondary', label: __('Secondary') },
-	{ value: 'success', label: __('Success') },
-	{ value: 'danger', label: __('Danger') },
-	{ value: 'warning', label: __('Warning') },
-	{ value: 'info', label: __('Info') },
-	{ value: 'light', label: __('Light') },
-	{ value: 'dark', label: __('Dark') },
+	{ value: 'primary', label: __( 'Primary', 'gutenstrap' ) },
+	{ value: 'secondary', label: __( 'Secondary', 'gutenstrap' ) },
+	{ value: 'success', label: __( 'Success', 'gutenstrap' ) },
+	{ value: 'danger', label: __( 'Danger', 'gutenstrap' ) },
+	{ value: 'warning', label: __( 'Warning', 'gutenstrap' ) },
+	{ value: 'info', label: __( 'Info', 'gutenstrap' ) },
+	{ value: 'light', label: __( 'Light', 'gutenstrap' ) },
+	{ value: 'dark', label: __( 'Dark', 'gutenstrap' ) },
 ] )
 
 export const gridOptions = {
 	breakpoints: [
-		{ value: 'xs', label: __('Extra small'), icon: <FontAwesomeIcon icon={ faMobileAlt } /> },
+		{ value: 'xs', label: __( 'Extra small', 'gutenstrap' ), icon: <FontAwesomeIcon icon={ faMobileAlt } /> },
 		...applyFilters( 'gutenstrap.grid.breakpoints', [
-			{ value: 'sm', label: __('Small'), icon: <FontAwesomeIcon icon={ faMobileAlt } rotation={ 270 } /> },
-			{ value: 'md', label: __('Medium'), icon: <FontAwesomeIcon icon={ faTabletAlt } /> },
-			{ value: 'lg', label: __('Large'), icon: <FontAwesomeIcon icon={ faLaptop } /> },
-			{ value: 'xl', label: __('Extra large'), icon: <FontAwesomeIcon icon={ faDesktop } /> },
+			{ value: 'sm', label: __( 'Small', 'gutenstrap' ), icon: <FontAwesomeIcon icon={ faMobileAlt } rotation={ 270 } /> },
+			{ value: 'md', label: __( 'Medium', 'gutenstrap' ), icon: <FontAwesomeIcon icon={ faTabletAlt } /> },
+			{ value: 'lg', label: __( 'Large', 'gutenstrap' ), icon: <FontAwesomeIcon icon={ faLaptop } /> },
+			{ value: 'xl', label: __( 'Extra large', 'gutenstrap' ), icon: <FontAwesomeIcon icon={ faDesktop } /> },
 		] ),
 	],
 	columnsNumber: applyFilters( 'gutenstrap.grid.columns', 12 ),

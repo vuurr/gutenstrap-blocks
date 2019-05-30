@@ -66,14 +66,14 @@ function getClasses( props ) {
  */
 registerBlockType( 'gutenstrap/container', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( 'GS Container' ),
-	description: __( 'Provide a means to center and horizontally pad your site’s contents.' ),
+	title: __( 'GS Container', 'gutenstrap' ),
+	description: __( 'Provide a means to center and horizontally pad your site’s contents.', 'gutenstrap' ),
 	icon: <FontAwesomeIcon icon={ faSquare } />,
 	category: 'gutenstrap', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
 	keywords: [
-		__( 'Gutenstrap' ),
-		__( 'Bootstrap' ),
-		__( 'Container' ),
+		__( 'Gutenstrap', 'gutenstrap' ),
+		__( 'Bootstrap', 'gutenstrap' ),
+		__( 'Container', 'gutenstrap' ),
 	],
 	supports: {
 		className: false,
@@ -117,10 +117,10 @@ registerBlockType( 'gutenstrap/container', {
 				<InspectorControls>
 					<PanelBody
 						initialOpen={ true }
-						title={ __( 'Settings' ) }
+						title={ __( 'Settings', 'gutenstrap' ) }
 					>
 						<ToggleControl
-							label={ __( 'Fluid' ) }
+							label={ __( 'Fluid', 'gutenstrap' ) }
 							checked={ isFluid }
 							onChange={ () => setAttributes( { isFluid: ! isFluid } ) }
 						/>

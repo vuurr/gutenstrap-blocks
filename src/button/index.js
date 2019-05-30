@@ -33,9 +33,9 @@ const {
 } = wp.components
 
 const sizes = applyFilters( 'gutenstrap.button.sizes', [
-	{ name: 'sm', title: __( 'Small' ) },
-	{ title: __( 'Normal' ) },
-	{ name: 'lg', title: __( 'Large' ) },
+	{ name: 'sm', title: __( 'Small', 'gutenstrap' ) },
+	{ title: __( 'Normal', 'gutenstrap' ) },
+	{ name: 'lg', title: __( 'Large', 'gutenstrap' ) },
 ] )
 
 /**
@@ -89,14 +89,14 @@ function getClasses( props ) {
  */
 registerBlockType( 'gutenstrap/button', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( 'GS Button' ),
-	description: __( 'Use Bootstrap’s custom button styles for actions in forms, dialogs, and more with support for multiple sizes, states, and more.' ),
+	title: __( 'GS Button', 'gutenstrap' ),
+	description: __( 'Use Bootstrap’s custom button styles for actions in forms, dialogs, and more with support for multiple sizes, states, and more.', 'gutenstrap' ),
 	icon: <SVG viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><Path d="M19 6H5c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 10H5V8h14v8z" /></SVG>,
 	category: 'gutenstrap', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
 	keywords: [
-		__( 'Gutenstrap' ),
-		__( 'Bootstrap' ),
-		__( 'Button' ),
+		__( 'Gutenstrap', 'gutenstrap' ),
+		__( 'Bootstrap', 'gutenstrap' ),
+		__( 'Button', 'gutenstrap' ),
 	],
 	supports: {
 		className: false,
@@ -180,10 +180,10 @@ registerBlockType( 'gutenstrap/button', {
 					<InspectorControls>
 						<PanelBody
 							initialOpen={ true }
-							title={ __( 'Settings' ) }
+							title={ __( 'Settings', 'gutenstrap' ) }
 						>
 							<SelectControl
-								label={ __( 'Type' ) }
+								label={ __( 'Type', 'gutenstrap' ) }
 								value={ themeType }
 								options={ themeTypes.map( ( { value, label } ) => ( {
 									value,
@@ -193,19 +193,19 @@ registerBlockType( 'gutenstrap/button', {
 							/>
 
 							<ToggleControl
-								label={ __( 'Outline' ) }
+								label={ __( 'Outline', 'gutenstrap' ) }
 								checked={ outline }
 								onChange={ () => setAttributes( { outline: ! outline } ) }
 							/>
 
 							<ToggleControl
-								label={ __( 'Block' ) }
+								label={ __( 'Block', 'gutenstrap' ) }
 								checked={ block }
 								onChange={ () => setAttributes( { block: ! block } ) }
 							/>
 
 							<ButtonGroupSelect
-								label={ __( 'Size' ) }
+								label={ __( 'Size', 'gutenstrap' ) }
 								value={ size }
 								options={ sizes }
 								onChange={ ( value ) => setAttributes( { size: value } ) }
@@ -222,7 +222,7 @@ registerBlockType( 'gutenstrap/button', {
 					</BlockControls>
 
 					<RichText
-						placeholder={ __( 'Add text…' ) }
+						placeholder={ __( 'Add text…', 'gutenstrap' ) }
 						value={ text }
 						onChange={ ( value ) => setAttributes( { text: filterContent( value ) } ) }
 						formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
@@ -241,11 +241,11 @@ registerBlockType( 'gutenstrap/button', {
 							value={ url }
 							onChange={ ( value ) => setAttributes( { url: value } ) }
 						/>
-						<IconButton icon="editor-break" label={ __( 'Apply' ) } type="submit" />
+						<IconButton icon="editor-break" label={ __( 'Apply', 'gutenstrap' ) } type="submit" />
 
 						<div class="gutenstrap-block-button__inline-field">
 							<ToggleControl
-								label={ __( 'Open in New Tab' ) }
+								label={ __( 'Open in New Tab', 'gutenstrap' ) }
 								checked={ blank }
 								onChange={ () => setAttributes( { blank: ! blank } ) }
 							/>

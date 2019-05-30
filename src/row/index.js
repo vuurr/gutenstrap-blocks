@@ -69,14 +69,14 @@ function getClasses( props ) {
  */
 registerBlockType( 'gutenstrap/row', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( 'GS Row' ),
-	description: __( 'Rows are wrappers for columns.' ),
+	title: __( 'GS Row', 'gutenstrap' ),
+	description: __( 'Rows are wrappers for columns.', 'gutenstrap' ),
 	icon: <FontAwesomeIcon icon={ faMinus } />,
 	category: 'gutenstrap', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
 	keywords: [
-		__( 'Gutenstrap' ),
-		__( 'Bootstrap' ),
-		__( 'Row' ),
+		__( 'Gutenstrap', 'gutenstrap' ),
+		__( 'Bootstrap', 'gutenstrap' ),
+		__( 'Row', 'gutenstrap' ),
 	],
 	supports: {
 		className: false,
@@ -124,36 +124,36 @@ registerBlockType( 'gutenstrap/row', {
 				<InspectorControls>
 					<PanelBody
 						initialOpen={ true }
-						title={ __( 'Settings' ) }
+						title={ __( 'Settings', 'gutenstrap' ) }
 					>
 						<SelectControl
-							label={ __( 'Vertical alignment' ) }
+							label={ __( 'Vertical alignment', 'gutenstrap' ) }
 							value={ alignItems }
 							options={ [
-								{ value: null, label: __( 'None' ) },
-								{ value: 'start', label: __( 'Start' ) },
-								{ value: 'center', label: __( 'Center' ) },
-								{ value: 'end', label: __( 'End' ) },
+								{ value: null, label: __( 'None', 'gutenstrap' ) },
+								{ value: 'start', label: __( 'Start', 'gutenstrap' ) },
+								{ value: 'center', label: __( 'Center', 'gutenstrap' ) },
+								{ value: 'end', label: __( 'End', 'gutenstrap' ) },
 							] }
 							onChange={ ( value ) => setAttributes( { alignItems: value } ) }
 						/>
 
 						<SelectControl
-							label={ __( 'Horizontal alignment' ) }
+							label={ __( 'Horizontal alignment', 'gutenstrap' ) }
 							value={ justifyContent }
 							options={ [
-								{ value: null, label: __( 'None' ) },
-								{ value: 'start', label: __( 'Start' ) },
-								{ value: 'center', label: __( 'Center' ) },
-								{ value: 'end', label: __( 'End' ) },
-								{ value: 'around', label: __( 'Space around' ) },
-								{ value: 'between', label: __( 'Space between' ) },
+								{ value: null, label: __( 'None', 'gutenstrap' ) },
+								{ value: 'start', label: __( 'Start', 'gutenstrap' ) },
+								{ value: 'center', label: __( 'Center', 'gutenstrap' ) },
+								{ value: 'end', label: __( 'End', 'gutenstrap' ) },
+								{ value: 'around', label: __( 'Space around', 'gutenstrap' ) },
+								{ value: 'between', label: __( 'Space between', 'gutenstrap' ) },
 							] }
 							onChange={ ( value ) => setAttributes( { justifyContent: value } ) }
 						/>
 
 						<ToggleControl
-							label={ __( 'No gutters' ) }
+							label={ __( 'No gutters', 'gutenstrap' ) }
 							checked={ nogutters }
 							onChange={ () => setAttributes( { nogutters: ! nogutters } ) }
 						/>

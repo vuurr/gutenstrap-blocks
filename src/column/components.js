@@ -15,8 +15,8 @@ const {
 } = wp.components
 
 const columnStaticSizes = [
-	{ value: 'equal', label: __( 'Equal' ) },
-	{ value: 'auto', label: __( 'Auto' ) },
+	{ value: 'equal', label: __( 'Equal', 'gutenstrap' ) },
+	{ value: 'auto', label: __( 'Auto', 'gutenstrap' ) },
 ]
 
 console.log( gridOptions )
@@ -135,7 +135,7 @@ class BreakpointColumnSizeSelect extends Component {
 					<BreakpointColumnSizeDropdown
 						param="size"
 						value={ this.props.value }
-						label={ __( 'Size' ) }
+						label={ __( 'Size', 'gutenstrap' ) }
 						min={ 1 }
 						max={ gridOptions.columnsNumber }
 						onChange={ ( value ) => this.props.onChange && this.props.onChange( value ) }
@@ -143,7 +143,7 @@ class BreakpointColumnSizeSelect extends Component {
 					<BreakpointColumnSizeDropdown
 						param="offset"
 						value={ this.props.value }
-						label={ __( 'Offset' ) }
+						label={ __( 'Offset', 'gutenstrap' ) }
 						min={ 0 }
 						max={ gridOptions.columnsNumber - 1 }
 						onChange={ ( value ) => this.props.onChange && this.props.onChange( value ) }

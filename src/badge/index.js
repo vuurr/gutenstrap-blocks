@@ -38,16 +38,16 @@ const {
  *                              registered otherwise `undefined`.
  */
 const name = 'gutenstrap/badge'
-const title = __( 'GS Badge' )
+const title = __( 'GS Badge', 'gutenstrap' )
 const tag = 'span'
 
 registerFormatType( name, {
 	// Format name. Format names must be string that contains a namespace prefix. Example: my-plugin/my-custom-format.
 	title: title,
 	keywords: [
-		__( 'Gutenstrap' ),
-		__( 'Bootstrap' ),
-		__( 'Badge' ),
+		__( 'Gutenstrap', 'gutenstrap' ),
+		__( 'Bootstrap', 'gutenstrap' ),
+		__( 'Badge', 'gutenstrap' ),
 	],
 	object: false,
 	tagName: tag,
@@ -182,13 +182,13 @@ registerFormatType( name, {
 									/>
 
 									<ToggleControl
-										label={ __( 'Pill badge' ) }
+										label={ __( 'Pill badge', 'gutenstrap' ) }
 										checked={ this.state.pill }
 										onChange={ () => this.setState( { pill: ! this.state.pill } ) }
 									/>
 								</div>
 
-								<IconButton icon="editor-break" label={ __( 'Apply' ) } type="submit" />
+								<IconButton icon="editor-break" label={ __( 'Apply', 'gutenstrap' ) } type="submit" />
 							</form>
 							{ /* eslint-enable jsx-a11y/no-noninteractive-element-interactions */ }
 						</PopoverAtObj>

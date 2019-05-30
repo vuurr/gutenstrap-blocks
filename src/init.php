@@ -5,7 +5,7 @@
  * Enqueue CSS/JS of all the blocks.
  *
  * @since   1.0.0
- * @package CGB
+ * @package Gutenstrap
  */
 
 // Exit if accessed directly.
@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * 3. blocks.editor.build.css - Backend.
  *
  */
-function gutenstrap_cgb_block_assets() { // phpcs:ignore
+function gutenstrap_plugin_block_assets() { // phpcs:ignore
 	// Register block styles for both frontend + backend.
 	// wp_register_style(
 	// 	'gutenstrap-style-css', // Handle.
@@ -35,7 +35,7 @@ function gutenstrap_cgb_block_assets() { // phpcs:ignore
 	wp_register_script(
 		'gutenstrap-block-js', // Handle.
 		plugins_url( '/dist/blocks.build.js', dirname( __FILE__ ) ), // Block.build.js: We register the block here. Built with Webpack.
-		array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor' ), // Dependencies, defined above.
+		array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'wp-hooks', 'wp-components', 'wp-keycodes', 'wp-rich-text', 'wp-block-editor' ), // Dependencies, defined above.
 		null, // filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.build.js' ), // Version: filemtime — Gets file modification time.
 		true // Enqueue the script in the footer.
 	);
@@ -58,23 +58,34 @@ function gutenstrap_cgb_block_assets() { // phpcs:ignore
 	 * @link https://wordpress.org/gutenberg/handbook/blocks/writing-your-first-block-type#enqueuing-block-scripts
 	 * @since 1.16.0
 	 */
-	register_block_type(
-		'gutenstrap/alert', array(
-			// Enqueue blocks.style.build.css on both frontend & backend.
-			// 'style'         => 'gutenstrap-style-css',
-			// Enqueue blocks.build.js in the editor only.
-			'editor_script' => 'gutenstrap-block-js',
-			// Enqueue blocks.editor.build.css in the editor only.
-			'editor_style'  => 'gutenstrap-block-editor-css',
-		)
+	$blocks = array(
+		'gutenstrap/alert',
+		'gutenstrap/button',
+
+		'gutenstrap/container',
+		'gutenstrap/row',
+		'gutenstrap/column',
 	);
+
+	foreach ( $blocks as $block ) {
+		register_block_type(
+			$block, array(
+				// Enqueue blocks.style.build.css on both frontend & backend.
+				// 'style'         => 'gutenstrap-style-css',
+				// Enqueue blocks.build.js in the editor only.
+				'editor_script' => 'gutenstrap-block-js',
+				// Enqueue blocks.editor.build.css in the editor only.
+				'editor_style'  => 'gutenstrap-block-editor-css',
+			)
+		);
+	}
 }
 
 // Hook: Block assets.
-add_action( 'init', 'gutenstrap_cgb_block_assets' );
+add_action( 'init', 'gutenstrap_plugin_block_assets' );
 
 // Define category
-function gutenstrap_category( $categories, $post ) {
+function gutenstrap_plugin_category( $categories, $post ) {
 	return array_merge(
 		$categories,
 		array(
@@ -85,4 +96,10 @@ function gutenstrap_category( $categories, $post ) {
 		)
 	);
 }
-add_filter( 'block_categories', 'gutenstrap_category', 10, 2);
+add_filter( 'block_categories', 'gutenstrap_plugin_category', 10, 2);
+
+// Load textdomain
+function gutenstrap_plugin_textdomain() {
+	load_plugin_textdomain( 'gutenstrap', false, basename( dirname( GUTENSTRAP_PLUGIN_FILE ) ) . '/languages' );
+}
+add_action( 'plugins_loaded', 'gutenstrap_plugin_textdomain' );

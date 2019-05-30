@@ -83,14 +83,14 @@ function getClasses( props ) {
  */
 registerBlockType( 'gutenstrap/column', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( 'GS Column' ),
-	description: __( 'In a grid layout, content must be placed within columns and only columns may be immediate children of rows.' ),
+	title: __( 'GS Column', 'gutenstrap' ),
+	description: __( 'In a grid layout, content must be placed within columns and only columns may be immediate children of rows.', 'gutenstrap' ),
 	icon: <FontAwesomeIcon icon={ faColumns } />,
 	category: 'gutenstrap', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
 	keywords: [
-		__( 'Gutenstrap' ),
-		__( 'Bootstrap' ),
-		__( 'Column' ),
+		__( 'Gutenstrap', 'gutenstrap' ),
+		__( 'Bootstrap', 'gutenstrap' ),
+		__( 'Column', 'gutenstrap' ),
 	],
 	supports: {
 		className: false,
@@ -131,7 +131,7 @@ registerBlockType( 'gutenstrap/column', {
 				<InspectorControls>
 					<PanelBody
 						initialOpen={ true }
-						title={ __( 'Settings' ) }
+						title={ __( 'Settings', 'gutenstrap' ) }
 					>
 						<ColumnSizeSelect
 							value={ col }

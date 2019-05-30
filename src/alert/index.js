@@ -31,18 +31,6 @@ const {
 } = wp.components
 
 /**
- * Filter block content
- *
- * @param  {string}  content
- * @return {string}
- */
-function filterContent( content ) {
-	content = applyFilters( 'gutenstrap.alert.content', content )
-
-	return content
-}
-
-/**
  * Create list of classes for class property
  *
  * @param  {Object}  props Block properties
@@ -82,14 +70,14 @@ function getClasses( props ) {
  */
 registerBlockType( 'gutenstrap/alert', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( 'GS Alert' ),
-	description: __( 'Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.' ),
+	title: __( 'GS Alert', 'gutenstrap' ),
+	description: __( 'Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.', 'gutenstrap' ),
 	icon: <FontAwesomeIcon icon={ faExclamationTriangle } />,
 	category: 'gutenstrap', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
 	keywords: [
-		__( 'Gutenstrap' ),
-		__( 'Bootstrap' ),
-		__( 'Alert' ),
+		__( 'Gutenstrap', 'gutenstrap' ),
+		__( 'Bootstrap', 'gutenstrap' ),
+		__( 'Alert', 'gutenstrap' ),
 	],
 	supports: {
 		className: false,
@@ -145,10 +133,10 @@ registerBlockType( 'gutenstrap/alert', {
 					<InspectorControls>
 						<PanelBody
 							initialOpen={ true }
-							title={ __( 'Settings' ) }
+							title={ __( 'Settings', 'gutenstrap' ) }
 						>
 							<SelectControl
-								label={ __( 'Type' ) }
+								label={ __( 'Type', 'gutenstrap' ) }
 								value={ themeType }
 								options={ themeTypes.map( ( { value, label } ) => ( {
 									value,
@@ -158,13 +146,13 @@ registerBlockType( 'gutenstrap/alert', {
 							/>
 
 							<ToggleControl
-								label={ __( 'Dismissible' ) }
+								label={ __( 'Dismissible', 'gutenstrap' ) }
 								checked={ dismissible }
 								onChange={ () => setAttributes( { dismissible: ! dismissible } ) }
 							/>
 
 							<ToggleControl
-								label={ __( 'Allow nesting' ) }
+								label={ __( 'Allow nesting', 'gutenstrap' ) }
 								checked={ allowNesting }
 								onChange={ () => setAttributes( { allowNesting: ! allowNesting } ) }
 							/>
@@ -185,9 +173,9 @@ registerBlockType( 'gutenstrap/alert', {
 							) : (
 								<RichText
 									value={ content }
-									placeholder={ __('Enter message here…') }
+									placeholder={ __( 'Enter message here…', 'gutenstrap' ) }
 									keepPlaceholderOnFocus
-									onChange={ ( value ) => setAttributes( { content: filterContent( value ) } ) }
+									onChange={ ( value ) => setAttributes( { content: value } ) }
 								/>
 							)
 						}
