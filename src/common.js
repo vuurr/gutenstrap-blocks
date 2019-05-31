@@ -12,28 +12,36 @@ const {
 	BaseControl,
 } = wp.components
 
-export const themeTypes = applyFilters( 'gutenstrap.theme.types', [
-	{ value: 'primary', label: __( 'Primary', 'gutenstrap' ) },
-	{ value: 'secondary', label: __( 'Secondary', 'gutenstrap' ) },
-	{ value: 'success', label: __( 'Success', 'gutenstrap' ) },
-	{ value: 'danger', label: __( 'Danger', 'gutenstrap' ) },
-	{ value: 'warning', label: __( 'Warning', 'gutenstrap' ) },
-	{ value: 'info', label: __( 'Info', 'gutenstrap' ) },
-	{ value: 'light', label: __( 'Light', 'gutenstrap' ) },
-	{ value: 'dark', label: __( 'Dark', 'gutenstrap' ) },
+// Gutenstrap Icon
+export const gutenstrapIcon = <SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 365.5 365.5"><Path fill="#563D7C" d="m365.5 304.6c0 33.5-27.4 60.9-60.9 60.9h-243.7c-33.5 0-60.9-27.4-60.9-60.9v-243.7c0-33.5 27.4-60.9 60.9-60.9h243.7c33.5 0 60.9 27.4 60.9 60.9v243.7z"/><Path fill="#FFF" d="m166.7 80.5c-37.5 4.7-62.4 31.4-66.5 71.4-1.6 15.6-0.6 70.1 1.4 79.2 5 22.2 15.7 38.4 32.8 49.5 32.3 21.1 87.6 12.1 105.2-17.2 6.7-11.1 6.9-12.3 7.3-42.3l0.4-26.9 7-2.3c26.7-8.7 48.5-30.6 39.1-39.3-4.7-4.4-10.2-2.9-15.6 4.1-10.2 13.2-27.3 20.7-51.6 22.4-24.7 1.8-42.8 12.8-54.2 33.1-7.8 13.8 6.9 22.5 14.9 8.8 7.7-13.1 20.8-22.4 33.7-23.9l4.4-0.5v23.4c0 20.7-0.2 24-1.5 28.3-9 29-59.7 35.2-84.4 10.3-14.7-14.8-16.7-22.8-17.1-68.2-0.4-43.9 0.9-53.4 9.3-67.3 22.2-36.9 88.8-31.7 93.7 7.4 1.2 9.8 5.1 13.8 12.6 12.9 9.8-1.1 12-10.8 6.1-26.5-9.2-24.5-43.3-40.6-77-36.4"/></SVG>
+
+// Set Gutesntrap icon for blocks category
+wp.blocks.updateCategory( 'wp-gutenstrap', { icon: gutenstrapIcon } )
+
+// Bootstrap theme types
+export const themeTypes = applyFilters( 'wp-gutenstrap.theme.types', [
+	{ value: 'primary', label: __( 'Primary', 'wp-gutenstrap' ) },
+	{ value: 'secondary', label: __( 'Secondary', 'wp-gutenstrap' ) },
+	{ value: 'success', label: __( 'Success', 'wp-gutenstrap' ) },
+	{ value: 'danger', label: __( 'Danger', 'wp-gutenstrap' ) },
+	{ value: 'warning', label: __( 'Warning', 'wp-gutenstrap' ) },
+	{ value: 'info', label: __( 'Info', 'wp-gutenstrap' ) },
+	{ value: 'light', label: __( 'Light', 'wp-gutenstrap' ) },
+	{ value: 'dark', label: __( 'Dark', 'wp-gutenstrap' ) },
 ] )
 
+// Bootstrap grid
 export const gridOptions = {
 	breakpoints: [
-		{ value: 'xs', label: __( 'Extra small', 'gutenstrap' ), icon: <FontAwesomeIcon icon={ faMobileAlt } /> },
-		...applyFilters( 'gutenstrap.grid.breakpoints', [
-			{ value: 'sm', label: __( 'Small', 'gutenstrap' ), icon: <FontAwesomeIcon icon={ faMobileAlt } rotation={ 270 } /> },
-			{ value: 'md', label: __( 'Medium', 'gutenstrap' ), icon: <FontAwesomeIcon icon={ faTabletAlt } /> },
-			{ value: 'lg', label: __( 'Large', 'gutenstrap' ), icon: <FontAwesomeIcon icon={ faLaptop } /> },
-			{ value: 'xl', label: __( 'Extra large', 'gutenstrap' ), icon: <FontAwesomeIcon icon={ faDesktop } /> },
+		{ value: 'xs', label: __( 'Extra small', 'wp-gutenstrap' ), icon: <FontAwesomeIcon icon={ faMobileAlt } /> },
+		...applyFilters( 'wp-gutenstrap.grid.breakpoints', [
+			{ value: 'sm', label: __( 'Small', 'wp-gutenstrap' ), icon: <FontAwesomeIcon icon={ faMobileAlt } rotation={ 270 } /> },
+			{ value: 'md', label: __( 'Medium', 'wp-gutenstrap' ), icon: <FontAwesomeIcon icon={ faTabletAlt } /> },
+			{ value: 'lg', label: __( 'Large', 'wp-gutenstrap' ), icon: <FontAwesomeIcon icon={ faLaptop } /> },
+			{ value: 'xl', label: __( 'Extra large', 'wp-gutenstrap' ), icon: <FontAwesomeIcon icon={ faDesktop } /> },
 		] ),
 	],
-	columnsNumber: applyFilters( 'gutenstrap.grid.columns', 12 ),
+	columnsNumber: applyFilters( 'wp-gutenstrap.grid.columns', 12 ),
 }
 
 export const utils = {

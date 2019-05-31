@@ -50,7 +50,7 @@ function getClasses( props ) {
 	return classnames( [
 		className,
 		'row',
-	], applyFilters( 'gutenstrap.row.classes', {
+	], applyFilters( 'wp-gutenstrap.row.classes', {
 		[ `text-${ alignment }` ]: !! alignment,
 		[ `align-items-${ alignItems }` ]: !! alignItems,
 		[ `justify-content-${ justifyContent }` ]: !! justifyContent,
@@ -67,16 +67,17 @@ function getClasses( props ) {
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered otherwise `undefined`.
  */
-registerBlockType( 'gutenstrap/row', {
+registerBlockType( 'wp-gutenstrap/row', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( 'GS Row', 'gutenstrap' ),
-	description: __( 'Rows are wrappers for columns.', 'gutenstrap' ),
+	title: __( 'GS Row', 'wp-gutenstrap' ),
+	description: __( 'Rows are wrappers for columns.', 'wp-gutenstrap' ),
 	icon: <FontAwesomeIcon icon={ faMinus } />,
-	category: 'gutenstrap', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
+	category: 'wp-gutenstrap', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
 	keywords: [
-		__( 'Gutenstrap', 'gutenstrap' ),
-		__( 'Bootstrap', 'gutenstrap' ),
-		__( 'Row', 'gutenstrap' ),
+		__( 'Gutenstrap', 'wp-gutenstrap' ),
+		__( 'WP Gutenstrap', 'wp-gutenstrap' ),
+		__( 'Bootstrap', 'wp-gutenstrap' ),
+		__( 'Row', 'wp-gutenstrap' ),
 	],
 	supports: {
 		className: false,
@@ -120,40 +121,40 @@ registerBlockType( 'gutenstrap/row', {
 		} = props.attributes
 
 		return (
-			<div class="gutenstrap-block-row" style={ { textAlign: alignment } }>
+			<div class="wp-gutenstrap-block-row" style={ { textAlign: alignment } }>
 				<InspectorControls>
 					<PanelBody
 						initialOpen={ true }
-						title={ __( 'Settings', 'gutenstrap' ) }
+						title={ __( 'Settings', 'wp-gutenstrap' ) }
 					>
 						<SelectControl
-							label={ __( 'Vertical alignment', 'gutenstrap' ) }
+							label={ __( 'Vertical alignment', 'wp-gutenstrap' ) }
 							value={ alignItems }
 							options={ [
-								{ value: null, label: __( 'None', 'gutenstrap' ) },
-								{ value: 'start', label: __( 'Start', 'gutenstrap' ) },
-								{ value: 'center', label: __( 'Center', 'gutenstrap' ) },
-								{ value: 'end', label: __( 'End', 'gutenstrap' ) },
+								{ value: null, label: __( 'None', 'wp-gutenstrap' ) },
+								{ value: 'start', label: __( 'Start', 'wp-gutenstrap' ) },
+								{ value: 'center', label: __( 'Center', 'wp-gutenstrap' ) },
+								{ value: 'end', label: __( 'End', 'wp-gutenstrap' ) },
 							] }
 							onChange={ ( value ) => setAttributes( { alignItems: value } ) }
 						/>
 
 						<SelectControl
-							label={ __( 'Horizontal alignment', 'gutenstrap' ) }
+							label={ __( 'Horizontal alignment', 'wp-gutenstrap' ) }
 							value={ justifyContent }
 							options={ [
-								{ value: null, label: __( 'None', 'gutenstrap' ) },
-								{ value: 'start', label: __( 'Start', 'gutenstrap' ) },
-								{ value: 'center', label: __( 'Center', 'gutenstrap' ) },
-								{ value: 'end', label: __( 'End', 'gutenstrap' ) },
-								{ value: 'around', label: __( 'Space around', 'gutenstrap' ) },
-								{ value: 'between', label: __( 'Space between', 'gutenstrap' ) },
+								{ value: null, label: __( 'None', 'wp-gutenstrap' ) },
+								{ value: 'start', label: __( 'Start', 'wp-gutenstrap' ) },
+								{ value: 'center', label: __( 'Center', 'wp-gutenstrap' ) },
+								{ value: 'end', label: __( 'End', 'wp-gutenstrap' ) },
+								{ value: 'around', label: __( 'Space around', 'wp-gutenstrap' ) },
+								{ value: 'between', label: __( 'Space between', 'wp-gutenstrap' ) },
 							] }
 							onChange={ ( value ) => setAttributes( { justifyContent: value } ) }
 						/>
 
 						<ToggleControl
-							label={ __( 'No gutters', 'gutenstrap' ) }
+							label={ __( 'No gutters', 'wp-gutenstrap' ) }
 							checked={ nogutters }
 							onChange={ () => setAttributes( { nogutters: ! nogutters } ) }
 						/>

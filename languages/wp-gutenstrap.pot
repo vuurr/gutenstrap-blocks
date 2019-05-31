@@ -1,32 +1,31 @@
 # Copyright (C) 2019 Vitaly Kasymov
-# This file is distributed under the same license as the Gutenstrap plugin.
+# This file is distributed under the same license as the WP Gutenstrap plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Gutenstrap 1.0.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/gutenstrap\n"
+"Project-Id-Version: WP Gutenstrap 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-gutenstrap\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-05-30T06:34:33+00:00\n"
+"POT-Creation-Date: 2019-05-30T23:41:25+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.1.0\n"
-"X-Domain: gutenstrap\n"
+"X-Domain: wp-gutenstrap\n"
 
 #. Plugin Name of the plugin
-#: src/init.php:94
-#: src/alert/index.js:78
-#: src/badge/index.js:48
-#: src/button/index.js:97
-#: src/column/index.js:91
-#: src/container/index.js:74
-#: src/row/index.js:77
-msgid "Gutenstrap"
+#: src/alert/index.js:79
+#: src/badge/index.js:49
+#: src/button/index.js:98
+#: src/column/index.js:92
+#: src/container/index.js:75
+#: src/row/index.js:78
+msgid "WP Gutenstrap"
 msgstr ""
 
 #. Plugin URI of the plugin
-msgid "https://wordpress.org/plugins/gutenstrap/"
+msgid "https://wordpress.org/plugins/wp-gutenstrap/"
 msgstr ""
 
 #. Description of the plugin
@@ -41,6 +40,16 @@ msgstr ""
 msgid "https://eolant.me/"
 msgstr ""
 
+#: src/init.php:94
+#: src/alert/index.js:78
+#: src/badge/index.js:48
+#: src/button/index.js:97
+#: src/column/index.js:91
+#: src/container/index.js:74
+#: src/row/index.js:77
+msgid "Gutenstrap"
+msgstr ""
+
 #: src/alert/index.js:73
 msgid "GS Alert"
 msgstr ""
@@ -49,41 +58,41 @@ msgstr ""
 msgid "Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages."
 msgstr ""
 
-#: src/alert/index.js:79
-#: src/badge/index.js:49
-#: src/button/index.js:98
-#: src/column/index.js:92
-#: src/container/index.js:75
-#: src/row/index.js:78
+#: src/alert/index.js:80
+#: src/badge/index.js:50
+#: src/button/index.js:99
+#: src/column/index.js:93
+#: src/container/index.js:76
+#: src/row/index.js:79
 msgid "Bootstrap"
 msgstr ""
 
-#: src/alert/index.js:80
+#: src/alert/index.js:81
 msgid "Alert"
 msgstr ""
 
-#: src/alert/index.js:136
-#: src/button/index.js:183
-#: src/column/index.js:134
-#: src/container/index.js:120
-#: src/row/index.js:127
+#: src/alert/index.js:137
+#: src/button/index.js:184
+#: src/column/index.js:135
+#: src/container/index.js:121
+#: src/row/index.js:128
 msgid "Settings"
 msgstr ""
 
-#: src/alert/index.js:139
-#: src/button/index.js:186
+#: src/alert/index.js:140
+#: src/button/index.js:187
 msgid "Type"
 msgstr ""
 
-#: src/alert/index.js:149
+#: src/alert/index.js:150
 msgid "Dismissible"
 msgstr ""
 
-#: src/alert/index.js:155
+#: src/alert/index.js:156
 msgid "Allow nesting"
 msgstr ""
 
-#: src/alert/index.js:176
+#: src/alert/index.js:177
 msgid "Enter message here…"
 msgstr ""
 
@@ -91,16 +100,16 @@ msgstr ""
 msgid "GS Badge"
 msgstr ""
 
-#: src/badge/index.js:50
+#: src/badge/index.js:51
 msgid "Badge"
 msgstr ""
 
-#: src/badge/index.js:185
+#: src/badge/index.js:186
 msgid "Pill badge"
 msgstr ""
 
-#: src/badge/index.js:191
-#: src/button/index.js:244
+#: src/badge/index.js:192
+#: src/button/index.js:245
 msgid "Apply"
 msgstr ""
 
@@ -126,28 +135,28 @@ msgstr ""
 msgid "Use Bootstrap’s custom button styles for actions in forms, dialogs, and more with support for multiple sizes, states, and more."
 msgstr ""
 
-#: src/button/index.js:99
+#: src/button/index.js:100
 msgid "Button"
 msgstr ""
 
-#: src/button/index.js:196
+#: src/button/index.js:197
 msgid "Outline"
 msgstr ""
 
-#: src/button/index.js:202
+#: src/button/index.js:203
 msgid "Block"
 msgstr ""
 
-#: src/button/index.js:208
+#: src/button/index.js:209
 #: src/column/components.js:138
 msgid "Size"
 msgstr ""
 
-#: src/button/index.js:225
+#: src/button/index.js:226
 msgid "Add text…"
 msgstr ""
 
-#: src/button/index.js:248
+#: src/button/index.js:249
 msgid "Open in New Tab"
 msgstr ""
 
@@ -171,7 +180,7 @@ msgstr ""
 msgid "In a grid layout, content must be placed within columns and only columns may be immediate children of rows."
 msgstr ""
 
-#: src/column/index.js:93
+#: src/column/index.js:94
 msgid "Column"
 msgstr ""
 
@@ -227,11 +236,11 @@ msgstr ""
 msgid "Provide a means to center and horizontally pad your site’s contents."
 msgstr ""
 
-#: src/container/index.js:76
+#: src/container/index.js:77
 msgid "Container"
 msgstr ""
 
-#: src/container/index.js:123
+#: src/container/index.js:124
 msgid "Fluid"
 msgstr ""
 
@@ -243,46 +252,46 @@ msgstr ""
 msgid "Rows are wrappers for columns."
 msgstr ""
 
-#: src/row/index.js:79
+#: src/row/index.js:80
 msgid "Row"
 msgstr ""
 
-#: src/row/index.js:130
+#: src/row/index.js:131
 msgid "Vertical alignment"
-msgstr ""
-
-#: src/row/index.js:133
-#: src/row/index.js:145
-msgid "None"
 msgstr ""
 
 #: src/row/index.js:134
 #: src/row/index.js:146
-msgid "Start"
+msgid "None"
 msgstr ""
 
 #: src/row/index.js:135
 #: src/row/index.js:147
-msgid "Center"
+msgid "Start"
 msgstr ""
 
 #: src/row/index.js:136
 #: src/row/index.js:148
+msgid "Center"
+msgstr ""
+
+#: src/row/index.js:137
+#: src/row/index.js:149
 msgid "End"
 msgstr ""
 
-#: src/row/index.js:142
+#: src/row/index.js:143
 msgid "Horizontal alignment"
 msgstr ""
 
-#: src/row/index.js:149
+#: src/row/index.js:150
 msgid "Space around"
 msgstr ""
 
-#: src/row/index.js:150
+#: src/row/index.js:151
 msgid "Space between"
 msgstr ""
 
-#: src/row/index.js:156
+#: src/row/index.js:157
 msgid "No gutters"
 msgstr ""

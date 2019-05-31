@@ -1,11 +1,11 @@
 /**
- * gutenstrap/column Editor Styles
+ * wp-gutenstrap/column Editor Styles
  *
  * CSS for just Backend enqueued after style.scss
  * which makes it higher in priority.
  */
 
-.block-editor-block-list__layout .block-editor-block-list__block[data-type="gutenstrap/column"] {
+.block-editor-block-list__layout .block-editor-block-list__block[data-type="wp-gutenstrap/column"] {
 	> .block-editor-block-drop-zone {
 		margin: 0 2px;
 		top: -22px;
@@ -46,7 +46,7 @@
 	}
 }
 
-.gutenstrap-block-column {
+.wp-gutenstrap-block-column {
 	padding: 1px 7px;
 
 	&__popover {

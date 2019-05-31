@@ -50,7 +50,7 @@ function getClasses( props ) {
 			'container': ! isFluid,
 			'container-fluid': isFluid
 		},
-	], applyFilters( 'gutenstrap.container.classes', {
+	], applyFilters( 'wp-gutenstrap.container.classes', {
 		[ `text-${ alignment }` ]: !! alignment
 	}, props ) )
 }
@@ -64,16 +64,17 @@ function getClasses( props ) {
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered otherwise `undefined`.
  */
-registerBlockType( 'gutenstrap/container', {
+registerBlockType( 'wp-gutenstrap/container', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( 'GS Container', 'gutenstrap' ),
-	description: __( 'Provide a means to center and horizontally pad your site’s contents.', 'gutenstrap' ),
+	title: __( 'GS Container', 'wp-gutenstrap' ),
+	description: __( 'Provide a means to center and horizontally pad your site’s contents.', 'wp-gutenstrap' ),
 	icon: <FontAwesomeIcon icon={ faSquare } />,
-	category: 'gutenstrap', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
+	category: 'wp-gutenstrap', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
 	keywords: [
-		__( 'Gutenstrap', 'gutenstrap' ),
-		__( 'Bootstrap', 'gutenstrap' ),
-		__( 'Container', 'gutenstrap' ),
+		__( 'Gutenstrap', 'wp-gutenstrap' ),
+		__( 'WP Gutenstrap', 'wp-gutenstrap' ),
+		__( 'Bootstrap', 'wp-gutenstrap' ),
+		__( 'Container', 'wp-gutenstrap' ),
 	],
 	supports: {
 		className: false,
@@ -113,14 +114,14 @@ registerBlockType( 'gutenstrap/container', {
 		} = props.attributes
 
 		return (
-			<div class="gutenstrap-block-container" style={ { textAlign: alignment } }>
+			<div class="wp-gutenstrap-block-container" style={ { textAlign: alignment } }>
 				<InspectorControls>
 					<PanelBody
 						initialOpen={ true }
-						title={ __( 'Settings', 'gutenstrap' ) }
+						title={ __( 'Settings', 'wp-gutenstrap' ) }
 					>
 						<ToggleControl
-							label={ __( 'Fluid', 'gutenstrap' ) }
+							label={ __( 'Fluid', 'wp-gutenstrap' ) }
 							checked={ isFluid }
 							onChange={ () => setAttributes( { isFluid: ! isFluid } ) }
 						/>

@@ -67,7 +67,7 @@ function getClasses( props ) {
 	return classnames( [
 		className,
 		...colClasses,
-	], applyFilters( 'gutenstrap.column.classes', {
+	], applyFilters( 'wp-gutenstrap.column.classes', {
 		[ `text-${ alignment }` ]: !! alignment
 	}, props ) )
 }
@@ -81,16 +81,17 @@ function getClasses( props ) {
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered otherwise `undefined`.
  */
-registerBlockType( 'gutenstrap/column', {
+registerBlockType( 'wp-gutenstrap/column', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( 'GS Column', 'gutenstrap' ),
-	description: __( 'In a grid layout, content must be placed within columns and only columns may be immediate children of rows.', 'gutenstrap' ),
+	title: __( 'GS Column', 'wp-gutenstrap' ),
+	description: __( 'In a grid layout, content must be placed within columns and only columns may be immediate children of rows.', 'wp-gutenstrap' ),
 	icon: <FontAwesomeIcon icon={ faColumns } />,
-	category: 'gutenstrap', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
+	category: 'wp-gutenstrap', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
 	keywords: [
-		__( 'Gutenstrap', 'gutenstrap' ),
-		__( 'Bootstrap', 'gutenstrap' ),
-		__( 'Column', 'gutenstrap' ),
+		__( 'Gutenstrap', 'wp-gutenstrap' ),
+		__( 'WP Gutenstrap', 'wp-gutenstrap' ),
+		__( 'Bootstrap', 'wp-gutenstrap' ),
+		__( 'Column', 'wp-gutenstrap' ),
 	],
 	supports: {
 		className: false,
@@ -127,11 +128,11 @@ registerBlockType( 'gutenstrap/column', {
 		} = props.attributes
 
 		return (
-			<div class="gutenstrap-block-column" style={ { textAlign: alignment } }>
+			<div class="wp-gutenstrap-block-column" style={ { textAlign: alignment } }>
 				<InspectorControls>
 					<PanelBody
 						initialOpen={ true }
-						title={ __( 'Settings', 'gutenstrap' ) }
+						title={ __( 'Settings', 'wp-gutenstrap' ) }
 					>
 						<ColumnSizeSelect
 							value={ col }

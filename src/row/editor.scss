@@ -1,11 +1,11 @@
 /**
- * gutenstrap/row Editor Styles
+ * wp-gutenstrap/row Editor Styles
  *
  * CSS for just Backend enqueued after style.scss
  * which makes it higher in priority.
  */
 
-.block-editor-block-list__layout .block-editor-block-list__block[data-type="gutenstrap/row"] {
+.block-editor-block-list__layout .block-editor-block-list__block[data-type="wp-gutenstrap/row"] {
 	> .block-editor-block-drop-zone {
 		margin: 0 2px;
 		top: -22px;
@@ -46,6 +46,6 @@
 	}
 }
 
-.gutenstrap-block-row {
+.wp-gutenstrap-block-row {
 	padding: 1px 7px;
 }

@@ -37,17 +37,18 @@ const {
  * @return {?WPFormat}          The format, if it has been successfully
  *                              registered otherwise `undefined`.
  */
-const name = 'gutenstrap/badge'
-const title = __( 'GS Badge', 'gutenstrap' )
+const name = 'wp-gutenstrap/badge'
+const title = __( 'GS Badge', 'wp-gutenstrap' )
 const tag = 'span'
 
 registerFormatType( name, {
 	// Format name. Format names must be string that contains a namespace prefix. Example: my-plugin/my-custom-format.
 	title: title,
 	keywords: [
-		__( 'Gutenstrap', 'gutenstrap' ),
-		__( 'Bootstrap', 'gutenstrap' ),
-		__( 'Badge', 'gutenstrap' ),
+		__( 'Gutenstrap', 'wp-gutenstrap' ),
+		__( 'WP Gutenstrap', 'wp-gutenstrap' ),
+		__( 'Bootstrap', 'wp-gutenstrap' ),
+		__( 'Badge', 'wp-gutenstrap' ),
 	],
 	object: false,
 	tagName: tag,
@@ -124,7 +125,7 @@ registerFormatType( name, {
 
 			return classnames( [
 				{ [ `badge-${ themeType }` ]: !! themeType },
-			], applyFilters( 'gutenstrap.badge.classes', {
+			], applyFilters( 'wp-gutenstrap.badge.classes', {
 				'badge-pill': pill,
 			}, this.state ) )
 		}
@@ -182,13 +183,13 @@ registerFormatType( name, {
 									/>
 
 									<ToggleControl
-										label={ __( 'Pill badge', 'gutenstrap' ) }
+										label={ __( 'Pill badge', 'wp-gutenstrap' ) }
 										checked={ this.state.pill }
 										onChange={ () => this.setState( { pill: ! this.state.pill } ) }
 									/>
 								</div>
 
-								<IconButton icon="editor-break" label={ __( 'Apply', 'gutenstrap' ) } type="submit" />
+								<IconButton icon="editor-break" label={ __( 'Apply', 'wp-gutenstrap' ) } type="submit" />
 							</form>
 							{ /* eslint-enable jsx-a11y/no-noninteractive-element-interactions */ }
 						</PopoverAtObj>
