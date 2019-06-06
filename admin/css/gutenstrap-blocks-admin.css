@@ -1,0 +1,42 @@
+.gutenstrap-blocks {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+}
+
+.gutenstrap-blocks__right {
+	max-width: 280px;
+	padding-top: 20px;
+	margin-top: 0.5em;
+}
+
+.gutenstrap-blocks__widget {
+	margin-bottom: 2rem;
+}
+
+.gutenstrap-blocks__widget--alert {
+    padding: .75rem 1.25rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    color: #fff;
+    background-color: #644d86;
+    border-color: #563d7c;
+}
+
+.gutenstrap-blocks__widget--alert a {
+	color: #d6d0e0;
+}
+
+.gutenstrap-blocks__widget--alert a:hover,
+.gutenstrap-blocks__widget--alert a:focus {
+	color: #f1eff5;
+}
+
+@media screen and (max-width: 782px) {
+	.gutenstrap-blocks {
+		display: block;
+	}
+}

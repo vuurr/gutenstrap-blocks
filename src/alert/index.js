@@ -52,7 +52,7 @@ function getClasses( props ) {
 		className,
 		'alert',
 		{ [ `alert-${ themeType }` ]: !! themeType },
-	], applyFilters( 'wp-gutenstrap.alert.classes', {
+	], applyFilters( 'gutenstrap-blocks.alert.classes', {
 		[ `text-${ alignment }` ]: !! alignment,
 		'alert-dismissible': dismissible,
 		'fade': dismissible,
@@ -69,17 +69,17 @@ function getClasses( props ) {
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered otherwise `undefined`.
  */
-registerBlockType( 'wp-gutenstrap/alert', {
+registerBlockType( 'gutenstrap-blocks/alert', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( 'GS Alert', 'wp-gutenstrap' ),
-	description: __( 'Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.', 'wp-gutenstrap' ),
+	title: __( 'GS Alert', 'gutenstrap-blocks' ),
+	description: __( 'Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.', 'gutenstrap-blocks' ),
 	icon: <FontAwesomeIcon icon={ faExclamationTriangle } />,
-	category: 'wp-gutenstrap', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
+	category: 'gutenstrap-blocks', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
 	keywords: [
-		__( 'Gutenstrap', 'wp-gutenstrap' ),
-		__( 'WP Gutenstrap', 'wp-gutenstrap' ),
-		__( 'Bootstrap', 'wp-gutenstrap' ),
-		__( 'Alert', 'wp-gutenstrap' ),
+		__( 'Gutenstrap', 'gutenstrap-blocks' ),
+		__( 'Gutenstrap Blocks', 'gutenstrap-blocks' ),
+		__( 'Bootstrap', 'gutenstrap-blocks' ),
+		__( 'Alert', 'gutenstrap-blocks' ),
 	],
 	supports: {
 		className: false,
@@ -135,10 +135,10 @@ registerBlockType( 'wp-gutenstrap/alert', {
 					<InspectorControls>
 						<PanelBody
 							initialOpen={ true }
-							title={ __( 'Settings', 'wp-gutenstrap' ) }
+							title={ __( 'Settings', 'gutenstrap-blocks' ) }
 						>
 							<SelectControl
-								label={ __( 'Type', 'wp-gutenstrap' ) }
+								label={ __( 'Type', 'gutenstrap-blocks' ) }
 								value={ themeType }
 								options={ themeTypes.map( ( { value, label } ) => ( {
 									value,
@@ -148,13 +148,13 @@ registerBlockType( 'wp-gutenstrap/alert', {
 							/>
 
 							<ToggleControl
-								label={ __( 'Dismissible', 'wp-gutenstrap' ) }
+								label={ __( 'Dismissible', 'gutenstrap-blocks' ) }
 								checked={ dismissible }
 								onChange={ () => setAttributes( { dismissible: ! dismissible } ) }
 							/>
 
 							<ToggleControl
-								label={ __( 'Allow nesting', 'wp-gutenstrap' ) }
+								label={ __( 'Allow nesting', 'gutenstrap-blocks' ) }
 								checked={ allowNesting }
 								onChange={ () => setAttributes( { allowNesting: ! allowNesting } ) }
 							/>
@@ -175,7 +175,7 @@ registerBlockType( 'wp-gutenstrap/alert', {
 							) : (
 								<RichText
 									value={ content }
-									placeholder={ __( 'Enter message here…', 'wp-gutenstrap' ) }
+									placeholder={ __( 'Enter message here…', 'gutenstrap-blocks' ) }
 									keepPlaceholderOnFocus
 									onChange={ ( value ) => setAttributes( { content: value } ) }
 								/>

@@ -15,11 +15,9 @@ const {
 } = wp.components
 
 const columnStaticSizes = [
-	{ value: 'equal', label: __( 'Equal', 'wp-gutenstrap' ) },
-	{ value: 'auto', label: __( 'Auto', 'wp-gutenstrap' ) },
+	{ value: 'equal', label: __( 'Equal', 'gutenstrap-blocks' ) },
+	{ value: 'auto', label: __( 'Auto', 'gutenstrap-blocks' ) },
 ]
-
-console.log( gridOptions )
 
 /**
  * Column size selector component
@@ -89,9 +87,9 @@ class BreakpointColumnSizeDropdown extends Component {
 					</Button>
 				) }
 				renderContent={ () => (
-					<div class="wp-gutenstrap-block-column__popover">
+					<div class="gutenstrap-blocks-block-column__popover">
 						<div
-							className={ classnames( 'wp-gutenstrap-block-column__popover__value', {
+							className={ classnames( 'gutenstrap-blocks-block-column__popover__value', {
 								'active': this.props.value && ! isNaN( this.props.value[ this.props.param ] )
 							} ) }
 						>
@@ -135,7 +133,7 @@ class BreakpointColumnSizeSelect extends Component {
 					<BreakpointColumnSizeDropdown
 						param="size"
 						value={ this.props.value }
-						label={ __( 'Size', 'wp-gutenstrap' ) }
+						label={ __( 'Size', 'gutenstrap-blocks' ) }
 						min={ 1 }
 						max={ gridOptions.columnsNumber }
 						onChange={ ( value ) => this.props.onChange && this.props.onChange( value ) }
@@ -143,7 +141,7 @@ class BreakpointColumnSizeSelect extends Component {
 					<BreakpointColumnSizeDropdown
 						param="offset"
 						value={ this.props.value }
-						label={ __( 'Offset', 'wp-gutenstrap' ) }
+						label={ __( 'Offset', 'gutenstrap-blocks' ) }
 						min={ 0 }
 						max={ gridOptions.columnsNumber - 1 }
 						onChange={ ( value ) => this.props.onChange && this.props.onChange( value ) }

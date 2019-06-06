@@ -67,7 +67,7 @@ function getClasses( props ) {
 	return classnames( [
 		className,
 		...colClasses,
-	], applyFilters( 'wp-gutenstrap.column.classes', {
+	], applyFilters( 'gutenstrap-blocks.column.classes', {
 		[ `text-${ alignment }` ]: !! alignment
 	}, props ) )
 }
@@ -81,17 +81,17 @@ function getClasses( props ) {
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered otherwise `undefined`.
  */
-registerBlockType( 'wp-gutenstrap/column', {
+registerBlockType( 'gutenstrap-blocks/column', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( 'GS Column', 'wp-gutenstrap' ),
-	description: __( 'In a grid layout, content must be placed within columns and only columns may be immediate children of rows.', 'wp-gutenstrap' ),
+	title: __( 'GS Column', 'gutenstrap-blocks' ),
+	description: __( 'In a grid layout, content must be placed within columns and only columns may be immediate children of rows.', 'gutenstrap-blocks' ),
 	icon: <FontAwesomeIcon icon={ faColumns } />,
-	category: 'wp-gutenstrap', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
+	category: 'gutenstrap-blocks', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
 	keywords: [
-		__( 'Gutenstrap', 'wp-gutenstrap' ),
-		__( 'WP Gutenstrap', 'wp-gutenstrap' ),
-		__( 'Bootstrap', 'wp-gutenstrap' ),
-		__( 'Column', 'wp-gutenstrap' ),
+		__( 'Gutenstrap', 'gutenstrap-blocks' ),
+		__( 'Gutenstrap Blocks', 'gutenstrap-blocks' ),
+		__( 'Bootstrap', 'gutenstrap-blocks' ),
+		__( 'Column', 'gutenstrap-blocks' ),
 	],
 	supports: {
 		className: false,
@@ -128,11 +128,11 @@ registerBlockType( 'wp-gutenstrap/column', {
 		} = props.attributes
 
 		return (
-			<div class="wp-gutenstrap-block-column" style={ { textAlign: alignment } }>
+			<div class="gutenstrap-blocks-block-column" style={ { textAlign: alignment } }>
 				<InspectorControls>
 					<PanelBody
 						initialOpen={ true }
-						title={ __( 'Settings', 'wp-gutenstrap' ) }
+						title={ __( 'Settings', 'gutenstrap-blocks' ) }
 					>
 						<ColumnSizeSelect
 							value={ col }

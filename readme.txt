@@ -1,4 +1,4 @@
-=== WP Gutenstrap ===
+=== Gutenstrap Blocks ===
 Contributors: eolant
 Tags: gutenberg, bootstrap, bootstrap 4, blocks, bootstrap blocks, grid, layout, components
 Donate link: https://www.patreon.com/eolant
@@ -12,17 +12,15 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Collection of Bootstrap 4 blocks for Gutenberg WordPress editor.
 
 == Description ==
-WP Gutenstrap plugin adds Bootstrap 4 components to Gutenberg WordPress editor as blocks and formats.
+Gutenstrap Blocks plugin adds Bootstrap 4 components to Gutenberg WordPress editor as blocks and formats.
 
-== Supported blocks: ==
+== Supported Bootstrap 4 blocks and formats: ==
 * Container
 * Row
 * Column
 * Button
 * Alert
 * Badge
-
-*Note that Bootstrap library is not supplied and have to be included in the theme*
 
 == Requirements ==
 * WordPress >= 5.2
@@ -31,7 +29,7 @@ WP Gutenstrap plugin adds Bootstrap 4 components to Gutenberg WordPress editor a
 == Installation ==
 Using CMS:
 1. Go to "Plugins" → "Add New"
-1. Search "WP Gutenstrap"
+1. Search "Gutenstrap Blocks"
 1. Click "Install Now"
 1. Activate the plugin
 
@@ -43,9 +41,6 @@ Manual:
 1. Activate the plugin
 
 == Frequently Asked Questions ==
-= Is bootstrap included on the front end? =
-No, you will have to include it yourself or use Bootstrap 4 based theme.
-
 = Can I customize Bootstrap styles in the editor? =
 Yes. Prefix your styles with `.bootstrap-styles` class and include prefixed Bootstrap 4 css on admin side.
 

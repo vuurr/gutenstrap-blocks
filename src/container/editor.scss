@@ -1,11 +1,11 @@
 /**
- * wp-gutenstrap/container Editor Styles
+ * gutenstrap-blocks/container Editor Styles
  *
  * CSS for just Backend enqueued after style.scss
  * which makes it higher in priority.
  */
 
-.block-editor-block-list__layout .block-editor-block-list__block[data-type="wp-gutenstrap/container"] {
+.block-editor-block-list__layout .block-editor-block-list__block[data-type="gutenstrap-blocks/container"] {
 	> .block-editor-block-drop-zone {
 		margin: 0 2px;
 		top: -22px;
@@ -45,6 +45,6 @@
 	}
 }
 
-.wp-gutenstrap-block-container {
+.gutenstrap-blocks-block-container {
 	padding: 1px 7px;
 }
