@@ -1,6 +1,6 @@
 === Gutenstrap Blocks ===
 Contributors: eolant
-Tags: gutenberg, bootstrap, bootstrap 4, blocks, bootstrap blocks, grid, layout, components
+Tags: gutenstrap, gutenberg, bootstrap, bootstrap 4, blocks, grid
 Donate link: https://www.patreon.com/eolant
 Requires at least: 5.2
 Tested up to: 5.2.1
@@ -9,10 +9,10 @@ Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Collection of Bootstrap 4 blocks for Gutenberg WordPress editor.
+Collection of Bootstrap 4 blocks and formats for Gutenberg WordPress editor.
 
 == Description ==
-Gutenstrap Blocks plugin adds Bootstrap 4 components to Gutenberg WordPress editor as blocks and formats.
+Gutenstrap Blocks plugin adds Bootstrap 4 components and grid layout to Gutenberg WordPress editor. It allows you to use full power of Bootstrap container, row and column components and create a layout you need with ease.
 
 == Supported Bootstrap 4 blocks and formats: ==
 * Container
@@ -54,7 +54,7 @@ Example of how to prefix styles using SASS:
 Yes! Anything is possible with your support.
 
 == Screenshots ==
-1. Easily create your layout howhever complex you need.
+1. Easily create your grid layout however complex you need.
 2. Button component.
 3. Alert component built in line with Bootstrap 4 documentation.
 
