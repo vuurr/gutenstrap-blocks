@@ -1,6 +1,6 @@
 === Gutenstrap Blocks ===
 Contributors: eolant
-Tags: gutenstrap, gutenberg, bootstrap, bootstrap 4, blocks, grid
+Tags: gutenstrap, gutenberg, bootstrap, gutenberg bootstrap, bootstrap 4, blocks, grid
 Donate link: https://www.patreon.com/eolant
 Requires at least: 5.2
 Tested up to: 5.2.1
@@ -12,15 +12,20 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Collection of Bootstrap 4 blocks and formats for Gutenberg WordPress editor.
 
 == Description ==
-Gutenstrap Blocks plugin adds Bootstrap 4 components and grid layout to Gutenberg WordPress editor. It allows you to use full power of Bootstrap container, row and column components and create a layout you need with ease.
+This plugin adds Bootstrap 4 components and grid layout to Gutenberg WordPress editor. It enhances editing experience focusing on making the most of library's documented features. Combine power of Gutenberg and Bootstrap to create a layout of any complexity with ease!
 
-== Supported Bootstrap 4 blocks and formats: ==
-* Container
-* Row
-* Column
-* Button
-* Alert
-* Badge
+== Supported Bootstrap blocks and formats: ==
+* **Container** - includes fluid container
+* **Row** - includes flexbox vertical and horizontal alignment classes and no gutters class
+* **Column** - allows to set equal sized columns, auto size, number column size and offset
+* **Button** - theme color selector, outline and block styles, small and large sizes
+* **Alert** - theme color selector, includes dismissible alerts and allows to nest other blocks
+* **Badge** - theme color selector, includes pill style
+
+*You can even nest rows!*
+
+== Bootstrap library ==
+CSS is included in the admin area to make editing in Gutenberg easier and styles are prefixed with `.bootstrap-styles` class. You can choose if you want to include to Bootstrap 4.3.1 on the front-end if you aren't using Bootstrap based theme.
 
 == Requirements ==
 * WordPress >= 5.2
@@ -47,7 +52,7 @@ Yes. Prefix your styles with `.bootstrap-styles` class and include prefixed Boot
 Example of how to prefix styles using SASS:
 ```
 .bootstrap-styles {
-	@import '~bootstrap/scss/bootstrap';
+    @import '~bootstrap/scss/bootstrap';
 }
 ```
 = Will there be more blocks? =
