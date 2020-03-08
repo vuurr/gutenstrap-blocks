@@ -26,7 +26,7 @@ const {
 	PanelColorSettings,
 	getColorClassName,
 	getColorObjectByColorValue,
-} = wp.editor
+} = wp.blockEditor
 const {
 	PanelBody,
 	ToggleControl,
@@ -46,6 +46,7 @@ function getClasses( props ) {
 	const {
 		alignment,
 		isFluid,
+		color,
 	} = props.attributes
 
 	return classnames( [
@@ -95,6 +96,9 @@ registerBlockType( 'gutenstrap-blocks/container', {
 		isFluid: {
 			type: 'boolean',
 		},
+		color: {
+			type: 'string'
+		}
 	},
 
 	/**
@@ -169,22 +173,25 @@ registerBlockType( 'gutenstrap-blocks/container', {
 		const classes = getClasses( props )
 
 		const settings = select( 'core/editor' ).getEditorSettings();
-		const colorObject = getColorObjectByColorValue( settings.colors, props.attributes.color );
+
+		let colorObject = getColorObjectByColorValue( settings.colors, props.attributes.color );
+
 		let containerClass = undefined;
+
 		if(colorObject && colorObject.name) {
-			containerClass = getColorClassName( 'background-color', colorObject.name )
+			containerClass = getColorClassName( 'background-color', colorObject.slug )
 		}
 
 		let containerClasses = containerClass || '';
 
 		let containerStyles = {
-			backgroundColor: containerClass ? undefined : props.attributes.color,
+			backgroundColor: /*containerClass ? undefined :*/ props.attributes.color,
 		};
 
 		let finalClasses = classes + " " + containerClasses;
 
 		return (
-			<div className={ finalClasses } style={containerStyles}>
+			<div className={ classes } style={containerStyles}>
 				<InnerBlocks.Content />
 			</div>
 		)
