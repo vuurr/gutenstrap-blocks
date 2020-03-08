@@ -116,7 +116,6 @@ registerBlockType( 'gutenstrap-blocks/container', {
 			alignment,
 			isFluid,
 			color,
-			textColor
 		} = props.attributes
 
 		return (
@@ -144,7 +143,6 @@ registerBlockType( 'gutenstrap-blocks/container', {
 							}
 						] }
 					>
-
 					</PanelColorSettings>
 				</InspectorControls>
 				<BlockControls>

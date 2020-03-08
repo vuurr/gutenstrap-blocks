@@ -17,11 +17,14 @@ import { SupportMe } from '../common.js'
 const { __ } = wp.i18n
 const { applyFilters } = wp.hooks
 const { registerBlockType } = wp.blocks
+const { select } = wp.data;
 const {
 	BlockControls,
 	AlignmentToolbar,
 	InspectorControls,
 	InnerBlocks,
+	getColorClassName,
+	getColorObjectByColorValue,
 } = wp.editor
 const {
 	PanelBody,
@@ -118,6 +121,7 @@ registerBlockType( 'gutenstrap-blocks/row', {
 			nogutters,
 			alignItems,
 			justifyContent,
+			color,
 		} = props.attributes
 
 		return (
@@ -161,6 +165,17 @@ registerBlockType( 'gutenstrap-blocks/row', {
 
 						<SupportMe />
 					</PanelBody>
+					<PanelColorSettings
+						title={ __( 'Color Settings' ) }
+						colorSettings={ [
+							{
+								value: color,
+								onChange: ( colorValue ) => setAttributes( { color: colorValue } ),
+								label: __( 'Background Color' ),
+							}
+						] }
+					>
+					</PanelColorSettings>
 				</InspectorControls>
 				<BlockControls>
 					<AlignmentToolbar
@@ -185,8 +200,23 @@ registerBlockType( 'gutenstrap-blocks/row', {
 	save: function( props ) {
 		const classes = getClasses( props )
 
+		const settings = select( 'core/editor' ).getEditorSettings();
+		const colorObject = getColorObjectByColorValue( settings.colors, props.attributes.color );
+		let containerClass = undefined;
+		if(colorObject && colorObject.name) {
+			containerClass = getColorClassName( 'background-color', colorObject.name )
+		}
+
+		let containerClasses = containerClass || '';
+
+		let containerStyles = {
+			backgroundColor: containerClass ? undefined : props.attributes.color,
+		};
+
+		let finalClasses = classes + " " + containerClasses;
+
 		return (
-			<div className={ classes }>
+			<div className={ finalClasses } style={containerStyles}>
 				<InnerBlocks.Content />
 			</div>
 		)
