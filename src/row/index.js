@@ -23,6 +23,7 @@ const {
 	AlignmentToolbar,
 	InspectorControls,
 	InnerBlocks,
+	PanelColorSettings,
 	getColorClassName,
 	getColorObjectByColorValue,
 } = wp.editor
