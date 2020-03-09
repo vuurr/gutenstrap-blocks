@@ -47,6 +47,7 @@ function getClasses( props ) {
 		alignment,
 		isFluid,
 		color,
+		colorClass,
 	} = props.attributes
 
 	return classnames( [
@@ -98,6 +99,9 @@ registerBlockType( 'gutenstrap-blocks/container', {
 		},
 		color: {
 			type: 'string'
+		},
+		colorClass: {
+			type: 'string'
 		}
 	},
 
@@ -120,7 +124,10 @@ registerBlockType( 'gutenstrap-blocks/container', {
 			alignment,
 			isFluid,
 			color,
+			colorClass
 		} = props.attributes
+
+		const settings = select( 'core/editor' ).getEditorSettings();
 
 		return (
 			<div class="gutenstrap-blocks-block-container" style={ { textAlign: alignment } }>
@@ -142,7 +149,10 @@ registerBlockType( 'gutenstrap-blocks/container', {
 						colorSettings={ [
 							{
 								value: color,
-								onChange: ( colorValue ) => setAttributes( { color: colorValue } ),
+								onChange: ( colorValue ) => setAttributes( {
+									color: colorValue,
+									colorClass: getColorObjectByColorValue( settings.colors, colorValue) ? getColorClassName( 'background-color', getColorObjectByColorValue( settings.colors, colorValue ).slug) : ''
+								} ),
 								label: __( 'Background Color' ),
 							}
 						] }
@@ -172,26 +182,14 @@ registerBlockType( 'gutenstrap-blocks/container', {
 	save: function( props ) {
 		const classes = getClasses( props )
 
-		const settings = select( 'core/editor' ).getEditorSettings();
-
-		let colorObject = getColorObjectByColorValue( settings.colors, props.attributes.color );
-
-		let containerClass = undefined;
-
-		if(colorObject && colorObject.name) {
-			containerClass = getColorClassName( 'background-color', colorObject.slug )
-		}
-
-		let containerClasses = containerClass || '';
-
 		let containerStyles = {
-			backgroundColor: /*containerClass ? undefined :*/ props.attributes.color,
+			backgroundColor: props.attributes.colorClass ? '' : props.attributes.color,
 		};
 
-		let finalClasses = classes + " " + containerClasses;
+		let finalClasses = classes + " " + props.attributes.colorClass;
 
 		return (
-			<div className={ classes } style={containerStyles}>
+			<div className={ finalClasses } style={containerStyles}>
 				<InnerBlocks.Content />
 			</div>
 		)

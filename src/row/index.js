@@ -49,6 +49,8 @@ function getClasses( props ) {
 		nogutters,
 		alignItems,
 		justifyContent,
+		color,
+		colorClass,
 	} = props.attributes
 
 	return classnames( [
@@ -100,6 +102,12 @@ registerBlockType( 'gutenstrap-blocks/row', {
 		justifyContent: {
 			type: 'string',
 		},
+		color: {
+			type: 'string'
+		},
+		colorClass: {
+			type: 'string'
+		}
 	},
 
 	/**
@@ -123,6 +131,7 @@ registerBlockType( 'gutenstrap-blocks/row', {
 			alignItems,
 			justifyContent,
 			color,
+			colorClass
 		} = props.attributes
 
 		return (
@@ -171,7 +180,10 @@ registerBlockType( 'gutenstrap-blocks/row', {
 						colorSettings={ [
 							{
 								value: color,
-								onChange: ( colorValue ) => setAttributes( { color: colorValue } ),
+								onChange: ( colorValue ) => setAttributes( {
+									color: colorValue,
+									colorClass: getColorObjectByColorValue( settings.colors, colorValue) ? getColorClassName( 'background-color', getColorObjectByColorValue( settings.colors, colorValue ).slug) : ''
+								} ),
 								label: __( 'Background Color' ),
 							}
 						] }
@@ -201,20 +213,11 @@ registerBlockType( 'gutenstrap-blocks/row', {
 	save: function( props ) {
 		const classes = getClasses( props )
 
-		const settings = select( 'core/editor' ).getEditorSettings();
-		const colorObject = getColorObjectByColorValue( settings.colors, props.attributes.color );
-		let containerClass = undefined;
-		if(colorObject && colorObject.name) {
-			containerClass = getColorClassName( 'background-color', colorObject.name )
-		}
-
-		let containerClasses = containerClass || '';
-
 		let containerStyles = {
-			backgroundColor: containerClass ? undefined : props.attributes.color,
+			backgroundColor: props.attributes.colorClass ? '' : props.attributes.color,
 		};
 
-		let finalClasses = classes + " " + containerClasses;
+		let finalClasses = classes + " " + props.attributes.colorClass;
 
 		return (
 			<div className={ finalClasses } style={containerStyles}>
