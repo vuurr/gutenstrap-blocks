@@ -21,7 +21,7 @@ const {
 	AlignmentToolbar,
 	InspectorControls,
 	URLInput,
-} = wp.editor
+} = wp.blockEditor
 const {
 	PanelBody,
 	SelectControl,

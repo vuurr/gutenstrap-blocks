@@ -26,7 +26,7 @@ const {
 	PanelColorSettings,
 	getColorClassName,
 	getColorObjectByColorValue,
-} = wp.editor
+} = wp.blockEditor
 const {
 	PanelBody,
 	ToggleControl,

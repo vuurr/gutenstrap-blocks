@@ -25,7 +25,7 @@ const {
 	AlignmentToolbar,
 	InspectorControls,
 	InnerBlocks,
-} = wp.editor
+} = wp.blockEditor
 const {
 	PanelBody,
 	ToggleControl,
