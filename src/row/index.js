@@ -134,6 +134,8 @@ registerBlockType( 'gutenstrap-blocks/row', {
 			colorClass
 		} = props.attributes
 
+		const settings = select( 'core/editor' ).getEditorSettings();
+
 		return (
 			<div class="gutenstrap-blocks-block-row" style={ { textAlign: alignment } }>
 				<InspectorControls>
